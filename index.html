@@ -50,7 +50,7 @@
             background: var(--bg);
             color: var(--text);
             line-height: 1.7;
-            font-size: 15px;
+            font-size: 17px;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -92,7 +92,7 @@
 
         .nav-logo {
             font-family: var(--serif);
-            font-size: 22px;
+            font-size: 26px;
             color: var(--text);
             letter-spacing: -0.5px;
         }
@@ -104,7 +104,7 @@
         }
 
         .nav-links a {
-            font-size: 12.5px;
+            font-size: 14px;
             font-weight: 500;
             letter-spacing: 0.6px;
             text-transform: uppercase;
@@ -164,7 +164,7 @@
             margin: 0 auto;
             width: 100%;
             display: grid;
-            grid-template-columns: 1fr 340px;
+            grid-template-columns: 1fr 420px;
             gap: 80px;
             align-items: center;
         }
@@ -184,7 +184,7 @@
         }
 
         .hero-text .tagline {
-            font-size: 17px;
+            font-size: 19px;
             color: var(--text-muted);
             max-width: 540px;
             line-height: 1.8;
@@ -294,15 +294,17 @@
         }
 
         .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
+            max-width: 800px;
         }
 
         .about-content p {
             color: var(--text-muted);
             line-height: 1.85;
-            font-size: 15px;
+            font-size: 15.5px;
+        }
+
+        .about-content p+p {
+            margin-top: 16px;
         }
 
         .edu-grid {
@@ -367,6 +369,13 @@
         .edu-card .location {
             color: var(--text-dim);
             font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .edu-card .gpa {
+            color: var(--accent);
+            font-family: var(--mono);
+            font-size: 13px;
             margin-bottom: 14px;
         }
 
@@ -402,7 +411,7 @@
 
         .skill-group h4 {
             font-family: var(--mono);
-            font-size: 11px;
+            font-size: 14px;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             color: var(--accent);
@@ -545,8 +554,8 @@
         }
 
         .paper-venue {
-            font-size: 13px;
-            color: var(--accent-warm);
+            font-size: 14px;
+            color: var(--text-muted);
             margin-bottom: 12px;
             font-family: var(--mono);
             letter-spacing: 0.3px;
@@ -791,10 +800,6 @@
                 max-width: 280px;
             }
 
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
             .edu-grid {
                 grid-template-columns: 1fr;
             }
@@ -859,7 +864,7 @@
 
     <nav>
         <div class="nav-inner">
-            <a href="#" class="nav-logo">VJ</a>
+            <a href="#" class="nav-logo">Vinay Jogani</a>
             <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')"
                 aria-label="Toggle menu">☰</button>
             <div class="nav-links">
@@ -878,12 +883,12 @@
     <section class="hero" id="top">
         <div class="hero-inner">
             <div class="hero-text fade-in">
-                <h1>Vinay<br><em>Jogani</em></h1>
+                <h1>Vinay<br>Jogani</h1>
                 <p class="tagline">MS in Information Systems, Northeastern University. Passionate about data science,
                     deep learning, computer vision, and their applications in healthcare and finance.</p>
                 <div class="hero-actions">
                     <a href="https://e4ace130-7adb-46e0-8246-2a9ee1004da9.filesusr.com/ugd/327f52_5731a7c98f994e078daa782afbce38c0.pdf"
-                        class="btn btn-primary" target="_blank">Resume ↓</a>
+                        class="btn btn-primary" target="_blank">Resume</a>
                     <a href="#contact" class="btn btn-outline">Get in Touch</a>
                     <a href="https://github.com/VinayJogani14" class="btn btn-outline" target="_blank">GitHub</a>
                 </div>
@@ -895,40 +900,25 @@
         </div>
     </section>
 
+    <!-- ABOUT -->
     <section id="about">
         <div class="section-inner">
             <div class="section-label fade-in">About</div>
             <h2 class="section-title fade-in">Building impactful, scalable<br>data &amp; ML solutions</h2>
-            <div class="about-content">
-                <div class="fade-in">
-                    <p>I am a data and machine learning professional with expertise spanning the full data lifecycle —
-                        from engineering scalable pipelines and databases to building production ML systems and
-                        delivering actionable analytics. I hold a Master of Science in Information Systems from
-                        Northeastern University (August 2025) and a Bachelor of Technology in Information Technology
-                        from Veermata Jijabai Technological Institute.</p>
-                    <br>
-                    <p>My experience encompasses both research and production environments. At Brigham and Women's
-                        Hospital, I developed NLP pipelines processing clinical trial reports, built statistical models
-                        for biomarker discovery, and engineered quantitative finance systems analyzing pharmaceutical
-                        market dynamics. As a Research Assistant at Northeastern University's Amal Lab, I architected
-                        deep learning models for medical image classification and built distributed computing
-                        infrastructure processing large-scale multi-omics datasets using Apache Spark and Dask.</p>
-                </div>
-                <div class="fade-in stagger-1">
-                    <p>I have strong software engineering foundations from my work at HCL Technologies, where I designed
-                        enterprise automation systems, and from building production-grade applications including a
-                        microservices-based Personal Finance API and a real-time Healthcare Data Pipeline processing
-                        patient records using Kafka, Spark, and Airflow.</p>
-                    <br>
-                    <p>Proficient in Python (TensorFlow, PyTorch, Scikit-learn, Pandas, NumPy), SQL/NoSQL databases,
-                        cloud platforms (AWS, GCP), and MLOps tools (Docker, Kubernetes, MLflow), I excel at building
-                        end-to-end solutions. I have presented peer-reviewed technical papers at international
-                        conferences on explainable AI, adversarial robustness, and deep learning applications.</p>
-                </div>
+            <div class="about-content fade-in">
+                <p>Data & ML professional with an MS in Information Systems from Northeastern University and a B.Tech
+                    from VJTI Mumbai. I build end-to-end solutions — from scalable data pipelines to production ML
+                    systems — across healthcare, finance, and enterprise domains.</p>
+                <p>My work spans deep learning for medical imaging (Brigham & Women's Hospital, Northeastern Amal Lab),
+                    NLP pipelines for clinical trials, quantitative finance modeling, and enterprise automation (HCL
+                    Technologies). Proficient in Python, PyTorch, TensorFlow, Spark, AWS/GCP, and MLOps tooling. I've
+                    published peer-reviewed papers on explainable AI, adversarial robustness, and deep learning at
+                    international IEEE conferences.</p>
             </div>
         </div>
     </section>
 
+    <!-- EDUCATION -->
     <section id="education" style="background: var(--bg-alt);">
         <div class="section-inner">
             <div class="section-label fade-in">Education</div>
@@ -939,6 +929,7 @@
                     <h3>Master of Science in Information Systems</h3>
                     <div class="school">Northeastern University</div>
                     <div class="location">Boston, MA</div>
+                    <div class="gpa">GPA: 3.64 / 4.0</div>
                     <div class="coursework"><strong>Coursework:</strong> Advance Data Science & Architecture, Parallel
                         Machine Learning & AI, LLM w/ Knowledge Graph DB, Natural Language Engineering, AI Generative
                         Modeling with focus in Finance</div>
@@ -951,6 +942,7 @@
                     <h3>B.Tech in Information Technology</h3>
                     <div class="school">Veermata Jijabai Technological Institute</div>
                     <div class="location">Mumbai, India</div>
+                    <div class="gpa">GPA: 7.49 / 10</div>
                     <div class="coursework"><strong>Coursework:</strong> Data Structures & Algo, Linear Algebra,
                         Discrete Mathematics, AI, Machine Learning, Data Architecture, Network Security, Big Data
                         Analysis, Computer Networks, Operating Systems</div>
@@ -962,6 +954,7 @@
         </div>
     </section>
 
+    <!-- SKILLS -->
     <section id="skills">
         <div class="section-inner">
             <div class="section-label fade-in">Skills</div>
@@ -1066,11 +1059,13 @@
         </div>
     </section>
 
+    <!-- EXPERIENCE -->
     <section id="experience" style="background: var(--bg-alt);">
         <div class="section-inner">
             <div class="section-label fade-in">Experience</div>
             <h2 class="section-title fade-in">Professional Journey</h2>
             <div class="exp-timeline">
+
                 <div class="exp-item fade-in">
                     <div class="exp-meta">
                         <div class="exp-date">Jun 2024 — Aug 2025</div>
@@ -1080,20 +1075,21 @@
                     <div class="exp-body">
                         <h3>AI/ML Research Assistant</h3>
                         <ul>
-                            <li>Engineered Med-SAM medical image segmentation system for multi-modal datasets (MRI, CT,
-                                histopathology) with automated preprocessing pipelines, achieving superior organ and
-                                lesion boundary detection through fine-tuned transformer architectures</li>
-                            <li>Architected scalable big data infrastructure processing 18TB+ TCGA multi-omics datasets
-                                using distributed computing frameworks, implementing unsupervised clustering and
-                                dimensionality reduction for biomarker discovery across 33+ cancer types</li>
-                            <li>Developed production-ready deep learning classification system achieving 97.28% accuracy
-                                on skin cancer detection through comparative analysis of ResNet-34, EfficientNet-B1,
-                                VGG16, and Vision Transformers with ensemble learning</li>
+                            <li>Built a Med-SAM segmentation system for MRI, CT, and histopathology images, improving
+                                organ and lesion boundary detection used by clinical researchers to accelerate
+                                diagnostic annotation workflows</li>
+                            <li>Processed 18TB+ of TCGA multi-omics data (RNA-Seq, methylation, CNV) across 33 cancer
+                                types using Spark and Dask, surfacing novel biomarker clusters that informed downstream
+                                survival analysis studies</li>
+                            <li>Trained and validated a skin cancer classifier reaching 97.28% accuracy across four
+                                architectures (ResNet-34, EfficientNet-B1, VGG16, ViT), delivering a production-ready
+                                model externally validated on three independent datasets</li>
                         </ul>
                         <div class="exp-tech"><span>PyTorch</span><span>TensorFlow</span><span>Hugging
                                 Face</span><span>OpenCV</span><span>Dask</span><span>Apache Spark</span></div>
                     </div>
                 </div>
+
                 <div class="exp-item fade-in">
                     <div class="exp-meta">
                         <div class="exp-date">Aug 2024 — Dec 2024</div>
@@ -1103,20 +1099,22 @@
                     <div class="exp-body">
                         <h3>Research Data Scientist</h3>
                         <ul>
-                            <li>Architected meta-analysis framework processing ClinicalTrials.gov and PubMed databases
-                                using ML algorithms to investigate participant heterogeneity across 10+ years of IBS and
-                                psychiatric disease trials</li>
-                            <li>Engineered clinical trial news analytics pipeline analyzing 10,000+ pharmaceutical
-                                reports using transformer-based NLP models (BERT, RoBERTa) and sentiment analysis</li>
-                            <li>Developed quantitative finance modeling system analyzing market microstructure impacts
-                                of clinical trial announcements using time-series econometric analysis and volatility
-                                modeling (GARCH, ARCH)</li>
+                            <li>Built a meta-analysis pipeline over ClinicalTrials.gov and PubMed, using random forests
+                                and mixed-effects models to quantify participant heterogeneity across 10+ years of IBS
+                                and psychiatric trials, producing findings presented to the clinical research team</li>
+                            <li>Analyzed 10,000+ pharmaceutical news articles with BERT and RoBERTa-based sentiment
+                                models, identifying a measurable correlation between negative Phase 2/3 media coverage
+                                and subsequent regulatory failure rates</li>
+                            <li>Created a quantitative finance system tracking stock volatility around clinical trial
+                                announcements using GARCH modeling and event-study methodology, enabling the team to
+                                assess market-signal reliability for trial outcome prediction</li>
                         </ul>
                         <div class="exp-tech">
                             <span>BERT</span><span>RoBERTa</span><span>spaCy</span><span>statsmodels</span><span>yfinance</span><span>PostgreSQL</span>
                         </div>
                     </div>
                 </div>
+
                 <div class="exp-item fade-in">
                     <div class="exp-meta">
                         <div class="exp-date">Jun 2022 — Jul 2022</div>
@@ -1126,21 +1124,25 @@
                     <div class="exp-body">
                         <h3>Software Engineer</h3>
                         <ul>
-                            <li>Architected enterprise-grade RPA automation system using UiPath Studio, achieving 85%
-                                reduction in manual search processes</li>
-                            <li>Engineered intelligent document processing solution with OCR and ML-enhanced extraction
-                                algorithms for structured PDF invoice processing with 95% accuracy</li>
-                            <li>Designed production-ready automation infrastructure with comprehensive error handling
-                                and robust logging using UiPath Orchestrator</li>
+                            <li>Built an RPA automation system in UiPath Studio that scraped and compared travel booking
+                                platforms end-to-end, cutting manual search time by 85% for the operations team</li>
+                            <li>Developed an OCR-based invoice extraction tool using regex parsing and UiPath,
+                                processing variable PDF formats at 95% field-level accuracy and eliminating manual data
+                                entry for the finance department</li>
+                            <li>Designed the error-handling and logging layer in UiPath Orchestrator, ensuring reliable
+                                execution across dynamic web content and mixed document formats in a production workflow
+                            </li>
                         </ul>
                         <div class="exp-tech"><span>UiPath</span><span>RPA</span><span>OCR</span><span>Web
                                 Scraping</span><span>Excel Automation</span></div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
+    <!-- TECHNICAL PAPERS -->
     <section id="papers">
         <div class="section-inner">
             <div class="section-label fade-in">Research</div>
@@ -1149,33 +1151,35 @@
                 <div class="paper-card fade-in">
                     <h3>Analysis of Explainable Methods on Medical Image Classification</h3>
                     <div class="paper-venue">ICAECT 2023 (IEEE) · May 2023</div>
-                    <p>Comprehensive comparative analysis of Explainable AI methodologies for lung cancer classification
-                        using deep CNNs (VGG-16, ResNet-50), implementing Grad-CAM, Integrated Gradients, and LIME on
-                        histopathology image datasets.</p>
+                    <p>Compared Grad-CAM, Integrated Gradients, and LIME on lung cancer histopathology classification
+                        with VGG-16 and ResNet-50, benchmarking interpretability quality and compute cost to guide XAI
+                        method selection in clinical settings.</p>
                     <a href="https://ieeexplore.ieee.org/document/10118312/" class="paper-link" target="_blank">Read
                         Paper</a>
                 </div>
                 <div class="paper-card fade-in stagger-1">
                     <h3>Intrusion Detection: A Deep Learning Approach</h3>
                     <div class="paper-venue">ICEEICT 2023 · April 2023</div>
-                    <p>Novel hybrid IDS combining CNN feature extraction with LSTM temporal modeling and SVM
-                        classification, achieving 97.29% accuracy on multi-class network attack classification.</p>
+                    <p>Proposed a hybrid CNN-LSTM-SVM architecture for network intrusion detection, reaching 97.29%
+                        accuracy and outperforming traditional IDS methods by 15+ points across NSL-KDD and CICIDS2017
+                        datasets.</p>
                     <a href="https://arxiv.org/abs/2306.07601" class="paper-link" target="_blank">Read Paper</a>
                 </div>
                 <div class="paper-card fade-in stagger-2">
                     <h3>Adversarial Attacks and Defences for Skin Cancer Classification</h3>
                     <div class="paper-venue">ICONAT 2023 (IEEE) · April 2023</div>
-                    <p>Comprehensive adversarial attack evaluation framework with PGD and FGSM against deep CNNs for
-                        dermatoscopic classification, achieving 27.73 percentage point improvement in model robustness.
-                    </p>
+                    <p>Evaluated PGD and FGSM attacks on dermatoscopic classifiers, then implemented adversarial
+                        training defenses that recovered 27.73 percentage points of robustness without sacrificing
+                        clean-image performance.</p>
                     <a href="https://ieeexplore.ieee.org/document/10080537" class="paper-link" target="_blank">Read
                         Paper</a>
                 </div>
                 <div class="paper-card fade-in stagger-3">
                     <h3>Image Captioning Using Transformer: VISIONAID</h3>
                     <div class="paper-venue">IRJET · October 2022</div>
-                    <p>Novel image captioning system implementing Swin Transformer architectures with hierarchical
-                        shifted window attention mechanisms and geometric-aware self-attention modules.</p>
+                    <p>Designed a Swin Transformer-based image captioning system with geometric-aware self-attention,
+                        achieving measurable improvements in BLEU, METEOR, and CIDEr over CNN-RNN baselines on MSCOCO
+                        and Flickr30k.</p>
                     <a href="https://www.irjet.net/archives/V9/i10/IRJET-V9I1087.pdf" class="paper-link"
                         target="_blank">Read Paper</a>
                 </div>
@@ -1183,6 +1187,7 @@
         </div>
     </section>
 
+    <!-- PROJECTS -->
     <section id="projects" style="background: var(--bg-alt);">
         <div class="section-inner">
             <div class="section-label fade-in">Work</div>
@@ -1191,71 +1196,78 @@
 
                 <div class="project-card fade-in">
                     <div class="project-date">Oct 2025</div>
-                    <h3>Healthcare Data Pipeline: Real-Time Analytics & Enterprise Data Engineering</h3>
-                    <p>Production-grade pipeline processing 10M+ patient records with dual paradigms: real-time Kafka
-                        streaming (500+ events/min) and batch Spark ETL with dbt medallion architecture, 99%+ data
-                        quality, Prometheus/Grafana observability.</p>
+                    <h3>Healthcare Data Pipeline</h3>
+                    <p>End-to-end pipeline handling 10M+ patient records through real-time Kafka streaming (500+
+                        events/min) and batch Spark ETL. Implemented dbt medallion architecture with 50+ Great
+                        Expectations tests maintaining 99%+ data quality, cutting full-refresh times by 85%.</p>
                     <div class="project-stack">
                         <span>Kafka</span><span>Spark</span><span>Airflow</span><span>dbt</span><span>Docker</span><span>K8s</span><span>Terraform</span>
-                    </div><a href="https://github.com/VinayJogani14/Healthcare-Data-Pipeline" class="project-link"
+                    </div>
+                    <a href="https://github.com/VinayJogani14/Healthcare-Data-Pipeline" class="project-link"
                         target="_blank">View Project</a>
                 </div>
 
                 <div class="project-card fade-in stagger-1">
                     <div class="project-date">Oct 2025</div>
-                    <h3>Financial Health Dashboard & Analytics Platform</h3>
-                    <p>PostgreSQL warehouse with 7 tables and recursive CTEs. Python ETL pipeline with Z-score anomaly
-                        detection. 5-page interactive Tableau dashboard with LOD expressions.</p>
+                    <h3>Financial Health Dashboard</h3>
+                    <p>Designed a PostgreSQL warehouse with 7 normalized tables and recursive CTEs powering sub-50ms
+                        analytical queries. Built a Python ETL pipeline with Z-score anomaly detection and a 5-page
+                        Tableau dashboard used to track budget variance and flag unusual spending.</p>
                     <div class="project-stack">
                         <span>PostgreSQL</span><span>Tableau</span><span>pandas</span><span>matplotlib</span><span>ReportLab</span>
-                    </div><a href="https://github.com/VinayJogani14/Financial-Dasboard" class="project-link"
+                    </div>
+                    <a href="https://github.com/VinayJogani14/Financial-Dasboard" class="project-link"
                         target="_blank">View Project</a>
                 </div>
 
                 <div class="project-card fade-in stagger-2">
                     <div class="project-date">Oct 2025</div>
                     <h3>NBA Injury Prediction System</h3>
-                    <p>End-to-end ML pipeline with 55+ engineered features achieving 78% AUC-ROC. Production FastAPI
-                        serving sub-100ms predictions with Redis caching, MLflow tracking, and full Docker/K8s
-                        deployment.</p>
+                    <p>Trained XGBoost/LightGBM models on 4,525 games with 55+ engineered features (fatigue indices,
+                        workload metrics) reaching 78% AUC-ROC. Served predictions via FastAPI at sub-100ms p95 latency
+                        with Redis caching and MLflow versioning.</p>
                     <div class="project-stack">
                         <span>XGBoost</span><span>FastAPI</span><span>Redis</span><span>MLflow</span><span>Docker</span>
-                    </div><a href="https://github.com/VinayJogani14/NBA-Injury-Prediction-System" class="project-link"
+                    </div>
+                    <a href="https://github.com/VinayJogani14/NBA-Injury-Prediction-System" class="project-link"
                         target="_blank">View Project</a>
                 </div>
 
                 <div class="project-card fade-in">
                     <div class="project-date">Oct 2025</div>
                     <h3>Trading Signals</h3>
-                    <p>Real-time trading app using Streamlit and Roboquant framework with Yahoo Finance integration.
-                        Multi-indicator technical analysis (RSI, MACD, SMA, Bollinger Bands) with consensus algorithm
-                        for automated buy/sell signals.</p>
+                    <p>Built a real-time Streamlit app that pulls live Yahoo Finance data and generates consensus
+                        buy/sell signals by combining RSI, MACD, SMA, and Bollinger Bands with automated risk/reward
+                        calculations and dynamic support/resistance levels.</p>
                     <div class="project-stack">
-                        <span>Streamlit</span><span>Roboquant</span><span>yfinance</span><span>pandas</span></div><a
-                        href="https://github.com/VinayJogani14/trading-signals" class="project-link"
-                        target="_blank">View Project</a>
+                        <span>Streamlit</span><span>Roboquant</span><span>yfinance</span><span>pandas</span>
+                    </div>
+                    <a href="https://github.com/VinayJogani14/trading-signals" class="project-link" target="_blank">View
+                        Project</a>
                 </div>
 
                 <div class="project-card fade-in stagger-1">
                     <div class="project-date">Oct 2025</div>
-                    <h3>Personal Finance API: Microservices Architecture</h3>
-                    <p>4 independent FastAPI services with JWT auth, 92% test coverage across 80+ tests, Redis caching
-                        (85%+ hit rate), Nginx load balancing, sub-50ms response times, and CI/CD with GitHub Actions.
-                    </p>
+                    <h3>Personal Finance API</h3>
+                    <p>Designed 4 independent FastAPI microservices (Auth, Transactions, Budgets, Analytics) with JWT
+                        auth, Redis caching reducing latency by 30%, and 92% test coverage. Handles 500+ concurrent
+                        users at sub-50ms response times in load testing.</p>
                     <div class="project-stack">
                         <span>FastAPI</span><span>PostgreSQL</span><span>Redis</span><span>Docker</span><span>K8s</span><span>Nginx</span>
-                    </div><a href="https://github.com/VinayJogani14/Personal-Finance-API" class="project-link"
+                    </div>
+                    <a href="https://github.com/VinayJogani14/Personal-Finance-API" class="project-link"
                         target="_blank">View Project</a>
                 </div>
 
                 <div class="project-card fade-in stagger-2">
                     <div class="project-date">Oct 2025</div>
                     <h3>Sports Betting A/B Testing Platform</h3>
-                    <p>Experimentation framework with frequentist, Bayesian, and sequential testing. Multi-armed bandits
-                        for traffic allocation. PostgreSQL processing 1M+ transactions. ML pipeline achieving CLV
-                        R²=0.89 and churn AUC-ROC=0.92.</p>
+                    <p>Built a full experimentation engine supporting frequentist, Bayesian, and sequential tests with
+                        multi-armed bandits (Thompson Sampling, UCB1). ML pipeline predicts customer lifetime value
+                        (R²=0.89) and churn (AUC-ROC=0.92), projecting $500K+ annual revenue impact.</p>
                     <div class="project-stack">
-                        <span>PostgreSQL</span><span>scikit-learn</span><span>scipy</span><span>statsmodels</span></div>
+                        <span>PostgreSQL</span><span>scikit-learn</span><span>scipy</span><span>statsmodels</span>
+                    </div>
                     <a href="https://github.com/VinayJogani14/Sports-Betting-AB-Testing" class="project-link"
                         target="_blank">View Project</a>
                 </div>
@@ -1263,254 +1275,220 @@
                 <div class="project-card fade-in">
                     <div class="project-date">Aug 2025</div>
                     <h3>KellyBet Analytics Platform</h3>
-                    <p>Distributed sports analytics with asyncio for real-time odds via RESTful APIs. ML ensemble
-                        methods achieving 87% prediction accuracy across 4 sports verticals with 100K+ historical
-                        records.</p>
+                    <p>Concurrent sports analytics system pulling real-time odds from multiple APIs via asyncio.
+                        Ensemble ML models (Random Forest, Gradient Boosting) achieve 87% prediction accuracy across 4
+                        sports, processing 100K+ historical records for daily model retraining.</p>
                     <div class="project-stack">
-                        <span>Streamlit</span><span>scikit-learn</span><span>asyncio</span><span>SQLite</span></div><a
-                        href="https://github.com/VinayJogani14/KellyBet-Analytics-Platform" class="project-link"
+                        <span>Streamlit</span><span>scikit-learn</span><span>asyncio</span><span>SQLite</span>
+                    </div>
+                    <a href="https://github.com/VinayJogani14/KellyBet-Analytics-Platform" class="project-link"
                         target="_blank">View Project</a>
                 </div>
 
                 <div class="project-card fade-in stagger-1">
                     <div class="project-date">Jul – Aug 2025</div>
                     <h3>CodeBuddy: Code Explanation Generator</h3>
-                    <p>AI-powered system integrating fine-tuned CodeT5 with RAG pipeline, achieving 24.1% BLEU
-                        improvement over GPT-4 baseline. FAISS vector search across 2M+ code snippets with sub-35ms
-                        retrieval.</p>
+                    <p>Fine-tuned CodeT5 with a RAG pipeline over 2.1M code-doc pairs, outperforming GPT-4 by 24.1% on
+                        BLEU for code explanation tasks. FAISS vector index enables sub-35ms retrieval across 2M+ code
+                        snippets with 0.84 BERTScore similarity.</p>
                     <div class="project-stack"><span>CodeT5</span><span>FAISS</span><span>PyTorch</span><span>RAG</span>
-                    </div><a
-                        href="https://github.com/VinayJogani14/CodeBuddy-A-Natural-Language-Code-Explanation-Generator"
+                    </div>
+                    <a href="https://github.com/VinayJogani14/CodeBuddy-A-Natural-Language-Code-Explanation-Generator"
                         class="project-link" target="_blank">View Project</a>
                 </div>
 
                 <div class="project-card fade-in stagger-2">
                     <div class="project-date">Jul – Aug 2025</div>
-                    <h3>SorosAI: Biography & Pairs Trading System</h3>
-                    <p>NLP chatbot with FAISS vector search for semantic Q&A over 4,000+ pairs. Statistical arbitrage
-                        with Engle-Granger cointegration achieving Sharpe ratios &gt;1.5 on market-neutral strategies.
-                    </p>
+                    <h3>SorosAI: Pairs Trading System</h3>
+                    <p>Combined an NLP chatbot (MiniLM + FAISS for 4,000+ Q&A pairs at 90%+ accuracy) with a statistical
+                        arbitrage engine using Engle-Granger cointegration and Z-score signals, achieving Sharpe ratios
+                        above 1.5 in historical backtests.</p>
                     <div class="project-stack">
                         <span>SentenceTransformers</span><span>FAISS</span><span>statsmodels</span><span>yFinance</span>
-                    </div><a
-                        href="https://github.com/VinayJogani14/SorosAI-Intelligent-Biography-and-Pairs-Trading-System"
+                    </div>
+                    <a href="https://github.com/VinayJogani14/SorosAI-Intelligent-Biography-and-Pairs-Trading-System"
                         class="project-link" target="_blank">View Project</a>
                 </div>
 
                 <div class="project-card fade-in">
                     <div class="project-date">Jun 2025</div>
-                    <h3>Workflow Automation: Swimlane Diagram Chatbot</h3>
-                    <p>Domain-specific chatbot parsing Swimlane diagrams and OpenAPI specs using GPT-4 Vision. Semantic
-                        retrieval via FAISS with MiniLM embeddings for contextual Q&A.</p>
+                    <h3>Workflow Automation: Swimlane Chatbot</h3>
+                    <p>Parses Swimlane diagrams and OpenAPI 3.0 specs using GPT-4 Vision, extracting structured event
+                        sequences (actor, action, decision). FAISS-backed semantic search enables natural language
+                        queries over unstructured process flows and API docs.</p>
                     <div class="project-stack"><span>GPT-4
-                            Vision</span><span>FAISS</span><span>Streamlit</span><span>OpenAPI</span></div><a
-                        href="https://github.com/VinayJogani14/swimlane-chatbot" class="project-link"
+                            Vision</span><span>FAISS</span><span>Streamlit</span><span>OpenAPI</span></div>
+                    <a href="https://github.com/VinayJogani14/swimlane-chatbot" class="project-link"
                         target="_blank">View Project</a>
                 </div>
 
                 <div class="project-card fade-in stagger-1">
+                    <div class="project-date">May 2025</div>
+                    <h3>AgileSmartSOR: Trading Simulator</h3>
+                    <p>Simulates institutional order execution with VWAP, TWAP, and POV algorithms across multiple
+                        exchanges. Interactive Streamlit UI allows real-time parameter tuning to analyze execution
+                        costs, slippage, and market microstructure behavior.</p>
+                    <div class="project-stack"><span>Streamlit</span><span>pandas</span><span>yfinance</span></div>
+                    <a href="https://github.com/VinayJogani14/Smart-Order-Routing-and-Trading-Algorithms-using-Agile-Methodology"
+                        class="project-link" target="_blank">View Project</a>
+                </div>
+
+                <div class="project-card fade-in stagger-2">
                     <div class="project-date">Mar – Apr 2025</div>
                     <h3>Skin Cancer Classification (Parallel ML)</h3>
-                    <p>Deep learning pipeline achieving 91.8% accuracy across 35 skin conditions on 245K images. 3.37×
-                        training acceleration via PyTorch DDP across 4× A100 GPUs with AMP.</p>
+                    <p>Classified 35 skin conditions on a 245K-image dataset using EfficientNet-B3 and DenseNet-121,
+                        reaching 91.8% accuracy and 96.2% macro F1. Distributed training across 4x A100 GPUs via PyTorch
+                        DDP cut training time by 3.37x.</p>
                     <div class="project-stack"><span>PyTorch
                             DDP</span><span>EfficientNet-B3</span><span>DenseNet-121</span><span>A100 GPUs</span></div>
                     <a href="https://github.com/VinayJogani14/Skin-Cancer-Classification-Using-High-Parallel-Machine-Learning"
                         class="project-link" target="_blank">View Project</a>
                 </div>
 
-                <div class="project-card fade-in stagger-2">
+                <div class="project-card fade-in">
                     <div class="project-date">Feb – Apr 2025</div>
-                    <h3>Supply Chain Management: Knowledge Graph & LLM</h3>
-                    <p>Interactive dashboard with Neo4j graph database for real-time supply chain analysis.
-                        Cypher-driven visualizations with framework for NL to Cypher query conversion via GPT-4.</p>
+                    <h3>Supply Chain: Knowledge Graph & LLM</h3>
+                    <p>Modeled retail supply networks in Neo4j (products, suppliers, orders, shipments) with
+                        Cypher-driven analytics. Interactive Streamlit dashboard supports supplier traceability, delay
+                        detection, and bottleneck analysis with planned NL-to-Cypher via GPT-4.</p>
                     <div class="project-stack">
                         <span>Neo4j</span><span>Cypher</span><span>Streamlit</span><span>GPT-4</span><span>Plotly</span>
-                    </div><a
-                        href="https://github.com/VinayJogani14/Supply-Chain-Management-using-Knowledge-Graphs-and-LLM"
+                    </div>
+                    <a href="https://github.com/VinayJogani14/Supply-Chain-Management-using-Knowledge-Graphs-and-LLM"
                         class="project-link" target="_blank">View Project</a>
                 </div>
 
-                <div class="project-card fade-in">
+                <div class="project-card fade-in stagger-1">
                     <div class="project-date">Feb 2025</div>
                     <h3>Volatility Surface Modeling</h3>
-                    <p>Calibrated volatility surfaces using Black-Scholes and Heston models with root-finding
-                        algorithms. Backtested options strategies with VaR/ES risk analysis and interactive 3D
-                        visualizations.</p>
+                    <p>Calibrated implied volatility surfaces with Black-Scholes and Heston stochastic models using
+                        SciPy and CVXPY optimization. Backtested delta-neutral and long/short vol strategies with VaR/ES
+                        risk metrics and interactive 3D Plotly visualizations.</p>
                     <div class="project-stack">
                         <span>SciPy</span><span>CVXPY</span><span>Plotly</span><span>yFinance</span><span>Streamlit</span>
-                    </div><a href="https://github.com/VinayJogani14/Volatility-Surface-Modelling" class="project-link"
+                    </div>
+                    <a href="https://github.com/VinayJogani14/Volatility-Surface-Modelling" class="project-link"
                         target="_blank">View Project</a>
                 </div>
 
-                <div class="project-card fade-in stagger-1">
+                <div class="project-card fade-in stagger-2">
                     <div class="project-date">Sep 2024</div>
                     <h3>Options Pricing Model</h3>
-                    <p>Black-Scholes, Binomial Tree, and Monte Carlo pricing for European options with real-time data
-                        via yfinance. Model convergence and computational comparison analysis.</p>
+                    <p>Implemented Black-Scholes, Binomial Tree, and Monte Carlo pricing for European options with live
+                        yfinance data. Compared model convergence behavior and computational trade-offs across
+                        stochastic and analytical approaches.</p>
                     <div class="project-stack">
-                        <span>NumPy</span><span>SciPy</span><span>yfinance</span><span>Matplotlib</span></div><a
-                        href="https://github.com/VinayJogani14/Options-pricing-model" class="project-link"
+                        <span>NumPy</span><span>SciPy</span><span>yfinance</span><span>Matplotlib</span>
+                    </div>
+                    <a href="https://github.com/VinayJogani14/Options-pricing-model" class="project-link"
                         target="_blank">View Project</a>
                 </div>
 
-                <div class="project-card fade-in stagger-2">
+                <div class="project-card fade-in">
                     <div class="project-date">Aug 2024</div>
                     <h3>Deep RL Trading Algorithm</h3>
-                    <p>Custom OpenAI Gym trading environment with OHLCV data and technical indicators. DRL models via
-                        stable_baselines3 with Bayesian hyperparameter optimization.</p>
+                    <p>Created a custom OpenAI Gym environment with OHLCV data and technical indicators (ta library),
+                        then trained DRL agents via stable_baselines3 with Bayesian hyperparameter search to optimize
+                        trading P&L over historical market data.</p>
                     <div class="project-stack">
                         <span>Gym</span><span>stable_baselines3</span><span>yfinance</span><span>Bayesian Opt</span>
-                    </div><a href="https://github.com/VinayJogani14/Deep-Reinforcement-Learning-Algorithm"
-                        class="project-link" target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in">
-                    <div class="project-date">Jul 2024</div>
-                    <h3>RL for Portfolio Management</h3>
-                    <p>Custom Gymnasium environment with PPO agent for dynamic weight allocation across 5 assets,
-                        achieving 23% return improvement with transaction costs and concentration penalties.</p>
-                    <div class="project-stack">
-                        <span>Gymnasium</span><span>Stable-Baselines3</span><span>PPO</span><span>NumPy</span></div><a
-                        href="https://github.com/VinayJogani14/Reinforcement-Learning-for-Portfolio-Management"
+                    </div>
+                    <a href="https://github.com/VinayJogani14/Deep-Reinforcement-Learning-Algorithm"
                         class="project-link" target="_blank">View Project</a>
                 </div>
 
                 <div class="project-card fade-in stagger-1">
-                    <div class="project-date">Jun 2024</div>
-                    <h3>Deep RL Pairs Trading</h3>
-                    <p>DQN-based model for market-neutral pairs trading (AAPL/MSFT) with real-time spread feature
-                        engineering, rolling averages, and mean-reversion signals.</p>
-                    <div class="project-stack"><span>DQN</span><span>OpenAI
-                            Gym</span><span>pandas</span><span>NumPy</span></div><a
-                        href="https://github.com/VinayJogani14/Deep-Reinforcement-Learning-Pairs-Trading"
+                    <div class="project-date">Jul 2024</div>
+                    <h3>RL for Portfolio Management</h3>
+                    <p>Trained a PPO agent in a custom Gymnasium environment simulating 5 assets over 1,000 trading days
+                        with 1.5% transaction costs and concentration penalties. Achieved 23% higher cumulative return
+                        than baseline while maintaining 90%+ portfolio diversification.</p>
+                    <div class="project-stack">
+                        <span>Gymnasium</span><span>Stable-Baselines3</span><span>PPO</span><span>NumPy</span>
+                    </div>
+                    <a href="https://github.com/VinayJogani14/Reinforcement-Learning-for-Portfolio-Management"
                         class="project-link" target="_blank">View Project</a>
                 </div>
 
                 <div class="project-card fade-in stagger-2">
                     <div class="project-date">Jun 2024</div>
-                    <h3>Mean-Variance Optimization with ESG</h3>
-                    <p>ESG-integrated portfolio optimizer with PyPortfolioOpt and Ledoit-Wolf shrinkage. 22% volatility
-                        reduction and 18% Sharpe improvement under ESG constraints vs unconstrained baselines.</p>
-                    <div class="project-stack">
-                        <span>PyPortfolioOpt</span><span>SciPy</span><span>CAPM</span><span>Matplotlib</span></div><a
-                        href="https://github.com/VinayJogani14/Mean-Variance-Opt-with-ESG-scores" class="project-link"
-                        target="_blank">View Project</a>
+                    <h3>Deep RL Pairs Trading</h3>
+                    <p>Trained a DQN agent to execute market-neutral pairs trades on AAPL/MSFT using spread dynamics,
+                        10- and 30-day rolling averages, and rolling volatility as state features, capturing
+                        mean-reversion opportunities automatically.</p>
+                    <div class="project-stack"><span>DQN</span><span>OpenAI
+                            Gym</span><span>pandas</span><span>NumPy</span></div>
+                    <a href="https://github.com/VinayJogani14/Deep-Reinforcement-Learning-Pairs-Trading"
+                        class="project-link" target="_blank">View Project</a>
                 </div>
 
                 <div class="project-card fade-in">
-                    <div class="project-date">May 2024</div>
-                    <h3>AgileSmartSOR: Trading Simulator</h3>
-                    <p>Smart order routing engine with agency execution algorithms (VWAP, TWAP, POV) simulating
-                        institutional order execution across multiple exchanges with interactive parameter tuning.</p>
-                    <div class="project-stack"><span>Streamlit</span><span>pandas</span><span>yfinance</span></div><a
-                        href="https://github.com/VinayJogani14/Smart-Order-Routing-and-Trading-Algorithms-using-Agile-Methodology"
-                        class="project-link" target="_blank">View Project</a>
+                    <div class="project-date">Jun 2024</div>
+                    <h3>Mean-Variance Optimization with ESG</h3>
+                    <p>Optimized a 15-stock S&P 500 portfolio using PyPortfolioOpt with Ledoit-Wolf shrinkage and ESG
+                        score constraints. ESG-constrained portfolios reduced volatility by 22% and improved Sharpe
+                        ratio by 18% versus unconstrained baselines in backtesting.</p>
+                    <div class="project-stack">
+                        <span>PyPortfolioOpt</span><span>SciPy</span><span>CAPM</span><span>Matplotlib</span>
+                    </div>
+                    <a href="https://github.com/VinayJogani14/Mean-Variance-Opt-with-ESG-scores" class="project-link"
+                        target="_blank">View Project</a>
                 </div>
 
                 <div class="project-card fade-in stagger-1">
                     <div class="project-date">May 2024</div>
                     <h3>Algorithmic Insider Trading Detector</h3>
-                    <p>Data pipeline ingesting yfinance stock data and SEC Form 4 filings via BeautifulSoup. ML
-                        classification and anomaly detection (Isolation Forest) for suspicious trading patterns.</p>
+                    <p>Ingested yfinance price data and SEC Form 4 filings (BeautifulSoup + EDGAR), then trained Random
+                        Forest, Gradient Boosting, and Isolation Forest models to flag anomalous trading patterns
+                        correlated with insider activity.</p>
                     <div class="project-stack">
                         <span>yfinance</span><span>BeautifulSoup</span><span>scikit-learn</span><span>Seaborn</span>
-                    </div><a href="https://github.com/VinayJogani14/Algorithmic-Insider-Trading-Detector"
-                        class="project-link" target="_blank">View Project</a>
+                    </div>
+                    <a href="https://github.com/VinayJogani14/Algorithmic-Insider-Trading-Detector" class="project-link"
+                        target="_blank">View Project</a>
                 </div>
 
                 <div class="project-card fade-in stagger-2">
                     <div class="project-date">Apr 2024</div>
-                    <h3>Trading Recommendation: Technical & Sentimental Analysis</h3>
-                    <p>End-to-end stock analysis integrating NASDAQ FTP data, Yahoo Finance, and sentiment from Reddit
-                        and Twitter to algorithmically rank and recommend top 5 stocks daily.</p>
+                    <h3>Trading Recommendation: Technical & Sentiment</h3>
+                    <p>Pulls NASDAQ symbols via FTP and historical data from Yahoo Finance, then combines technical
+                        indicators with Reddit/Twitter sentiment to algorithmically rank and recommend the top 5 stocks
+                        daily.</p>
                     <div class="project-stack"><span>yFinance</span><span>pandas</span><span>Sentiment
-                            Analysis</span><span>Web Scraping</span></div><a
-                        href="https://github.com/VinayJogani14/Trading-with-Technical-and-Sentimental-Analysis"
+                            Analysis</span><span>Web Scraping</span></div>
+                    <a href="https://github.com/VinayJogani14/Trading-with-Technical-and-Sentimental-Analysis"
                         class="project-link" target="_blank">View Project</a>
                 </div>
 
                 <div class="project-card fade-in">
-                    <div class="project-date">Apr 2024</div>
-                    <h3>Air Pollution Analysis</h3>
-                    <p>Applied causal inference to analyze PM2.5 and NO2 impact on air quality using global pollution
-                        datasets. Statistical analysis and visualization to uncover pollutant–public health
-                        relationships.</p>
-                    <div class="project-stack"><span>pandas</span><span>Causal
-                            Inference</span><span>Matplotlib</span><span>Seaborn</span></div><a
-                        href="https://github.com/VinayJogani14/Data_Science_Projects" class="project-link"
-                        target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in stagger-1">
-                    <div class="project-date">Mar 2024</div>
-                    <h3>Product Recommendation</h3>
-                    <p>Causal inference with Propensity Score Matching and Difference-in-Differences for e-grocery
-                        recommendation. RCTs and DAGs for causal modeling improving customer lifetime value predictions.
-                    </p>
-                    <div class="project-stack"><span>Causal
-                            Inference</span><span>PSM</span><span>DiD</span><span>DAGs</span></div><a
-                        href="https://github.com/VinayJogani14/Data_Science_Projects" class="project-link"
-                        target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in stagger-2">
-                    <div class="project-date">Feb 2024</div>
-                    <h3>FIFA Data Analysis</h3>
-                    <p>In-depth EDA on FIFA player data exploring foot preference, position distribution, and attribute
-                        correlations. Heatmap visualizations to uncover player rating and performance patterns.</p>
-                    <div class="project-stack">
-                        <span>pandas</span><span>Matplotlib</span><span>Seaborn</span><span>EDA</span></div><a
-                        href="https://github.com/VinayJogani14/Data_Science_Projects" class="project-link"
-                        target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in">
-                    <div class="project-date">Feb 2024</div>
-                    <h3>Titanic Analysis</h3>
-                    <p>Data cleaning and exploratory analysis on Titanic passenger data. Visualized survival patterns
-                        across gender, class, and demographics to identify significant survival factors.</p>
-                    <div class="project-stack">
-                        <span>pandas</span><span>Seaborn</span><span>EDA</span><span>Statistics</span></div><a
-                        href="https://github.com/VinayJogani14/Data_Science_Projects" class="project-link"
-                        target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in stagger-1">
-                    <div class="project-date">Nov – Dec 2023</div>
-                    <h3>Tennis Analysis</h3>
-                    <p>Analyzed 508 ATP Grand Slam matches from 2023, extracting aces, win percentages, and break points
-                        from 3,000+ records. Automated pipeline with PyMC for statistical modeling.</p>
-                    <div class="project-stack">
-                        <span>pandas</span><span>Matplotlib</span><span>PyMC</span><span>Statistics</span></div><a
-                        href="https://github.com/VinayJogani14/Data_Science_Projects" class="project-link"
-                        target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in stagger-2">
                     <div class="project-date">Sep 2022 – May 2023</div>
                     <h3>Copy-Move Forgery Detection</h3>
-                    <p>Custom CNN on CASIA 2.0 dataset achieving 96.90% accuracy for image manipulation detection.
-                        Deployed on AWS EC2 with SVM integration and web GUI.</p>
+                    <p>Trained a custom CNN on the CASIA 2.0 dataset reaching 96.90% accuracy for copy-move manipulation
+                        detection. Deployed on AWS EC2 with SVM-based categorization and a web GUI for real-time image
+                        testing.</p>
                     <div class="project-stack"><span>CNN</span><span>SVM</span><span>AWS EC2</span><span>CASIA
-                            2.0</span></div><a href="https://github.com/VinayJogani14/Copy-Move-Forgery-Detection"
-                        class="project-link" target="_blank">View Project</a>
+                            2.0</span></div>
+                    <a href="https://github.com/VinayJogani14/Copy-Move-Forgery-Detection" class="project-link"
+                        target="_blank">View Project</a>
                 </div>
 
-                <div class="project-card fade-in">
+                <div class="project-card fade-in stagger-1">
                     <div class="project-date">Dec 2022 – May 2023</div>
                     <h3>DeepFake Detection</h3>
-                    <p>GAN-based detection system using MRI-GAN framework with SSIM perceptual analysis on DeepFake
-                        Detection Challenge Dataset. 91% test accuracy on plain frames model.</p>
+                    <p>Built a GAN-based detection system using an MRI-GAN framework that highlights synthesized
+                        artifacts in manipulated images. Plain-frames model reached 91% test accuracy on the DeepFake
+                        Detection Challenge Dataset.</p>
                     <div class="project-stack"><span>GANs</span><span>MRI-GAN</span><span>SSIM</span><span>Deep
-                            Learning</span></div><a href="https://github.com/VinayJogani14/Deep-Fake-Detection-GAN-s"
-                        class="project-link" target="_blank">View Project</a>
+                            Learning</span></div>
+                    <a href="https://github.com/VinayJogani14/Deep-Fake-Detection-GAN-s" class="project-link"
+                        target="_blank">View Project</a>
                 </div>
 
             </div>
         </div>
     </section>
 
+    <!-- CERTIFICATES -->
     <section id="certificates">
         <div class="section-inner">
             <div class="section-label fade-in">Credentials</div>
@@ -1547,33 +1525,16 @@
                         class="cert-link" target="_blank">View Certificate →</a>
                 </div>
                 <div class="cert-card fade-in stagger-2">
-                    <h4>Python 3 Programming Specialization</h4>
-                    <div class="cert-issuer">Coursera · Jul 2020</div><a
-                        href="https://www.coursera.org/account/accomplishments/specialization/DV33BF5WKD42"
-                        class="cert-link" target="_blank">View Certificate →</a>
-                </div>
-                <div class="cert-card fade-in">
-                    <h4>Introduction to Relational Database and SQL</h4>
-                    <div class="cert-issuer">Coursera · Jul 2020</div><a
-                        href="https://www.coursera.org/account/accomplishments/verify/93RHRNB9BEZQ" class="cert-link"
-                        target="_blank">View Certificate →</a>
-                </div>
-                <div class="cert-card fade-in stagger-1">
                     <h4>Financial Markets</h4>
                     <div class="cert-issuer">Yale University (Coursera) · May 2020</div><a
                         href="https://www.coursera.org/account/accomplishments/verify/LW3EAW29CLA3" class="cert-link"
-                        target="_blank">View Certificate →</a>
-                </div>
-                <div class="cert-card fade-in stagger-2">
-                    <h4>Successful Negotiation: Essential Strategies and Skills</h4>
-                    <div class="cert-issuer">University of Michigan (Coursera) · May 2020</div><a
-                        href="https://www.coursera.org/account/accomplishments/verify/2BMWZ2SHHPLQ" class="cert-link"
                         target="_blank">View Certificate →</a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact" class="contact-section">
         <div class="section-inner">
             <div class="section-label fade-in">Connect</div>
@@ -1586,7 +1547,6 @@
                     <br>
                     <p><strong>Location:</strong> San Francisco, CA</p>
                     <p><a href="mailto:joganivinay@gmail.com" class="email-link">joganivinay@gmail.com</a></p>
-                    <p><a href="mailto:joganivinay@yahoo.in" class="email-link">joganivinay@yahoo.in</a></p>
                     <div class="social-links">
                         <a href="https://www.linkedin.com/in/vinayjogani/" target="_blank" title="LinkedIn">in</a>
                         <a href="https://github.com/VinayJogani14" target="_blank" title="GitHub"><svg width="16"

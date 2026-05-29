@@ -146,10 +146,10 @@ nav.scrolled{padding:16px 40px}
 }
 .hero-img{
   position:absolute;
-  right:-5%;top:50%;
+  right:4%;top:50%;
   transform:translateY(-50%);
-  width:55%;
-  max-width:700px;
+  width:40%;
+  max-width:560px;
   aspect-ratio:1;
   border-radius:50%;
   background-image:url('https://static.wixstatic.com/media/327f52_f0f8f477286a4d29bbb0abb08376392d~mv2.jpg/v1/crop/x_107,y_9,w_1287,h_1394/fill/w_800,h_866,al_c,q_85,enc_avif,quality_auto/Vinay_edited.jpg');
@@ -157,8 +157,8 @@ nav.scrolled{padding:16px 40px}
   background-position:center;
   filter:grayscale(.4) contrast(1.05);
   opacity:.85;
-  mask-image:radial-gradient(ellipse at center, #000 50%, transparent 75%);
-  -webkit-mask-image:radial-gradient(ellipse at center, #000 50%, transparent 75%);
+  mask-image:radial-gradient(ellipse at center, #000 55%, transparent 78%);
+  -webkit-mask-image:radial-gradient(ellipse at center, #000 55%, transparent 78%);
   z-index:1;
 }
 .hero-content{position:relative;z-index:2;max-width:1400px;margin:0 auto;width:100%}
@@ -766,7 +766,7 @@ footer{
 
 /* responsive hero img */
 @media(max-width:900px){
-  .hero-img{width:80%;right:-20%;opacity:.4}
+  .hero-img{width:65%;right:50%;transform:translate(50%,-50%);top:18%;opacity:.25}
   .scroll-cue{display:none}
 }
 </style>

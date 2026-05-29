@@ -1,1590 +1,1324 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinay Jogani — Data Science & ML Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap"
-        rel="stylesheet">
-    <style>
-        :root {
-            --bg: #0b0f14;
-            --bg-alt: #0e1319;
-            --bg-card: #121820;
-            --bg-card-hover: #171f2a;
-            --border: #1e2836;
-            --border-accent: #263040;
-            --text: #e4e8ee;
-            --text-muted: #8c96a8;
-            --text-dim: #556177;
-            --accent: #3ec9d1;
-            --accent-hover: #5cdbdf;
-            --accent-glow: rgba(62, 201, 209, 0.12);
-            --accent-warm: #d1883e;
-            --serif: 'Instrument Serif', Georgia, serif;
-            --sans: 'DM Sans', system-ui, sans-serif;
-            --mono: 'JetBrains Mono', monospace;
-            --radius: 10px;
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
-
-        body {
-            font-family: var(--sans);
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            font-size: 17px;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        ::selection {
-            background: var(--accent);
-            color: var(--bg);
-        }
-
-        a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: color var(--transition);
-        }
-
-        a:hover {
-            color: var(--accent-hover);
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            background: rgba(11, 15, 20, 0.88);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 32px;
-            height: 64px;
-        }
-
-        .nav-logo {
-            font-family: var(--serif);
-            font-size: 26px;
-            color: var(--text);
-            letter-spacing: -0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
-        .nav-links a {
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0.6px;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            padding: 6px 12px;
-            border-radius: 6px;
-            transition: all var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--text);
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text);
-            cursor: pointer;
-            font-size: 24px;
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 100px 32px 60px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -300px;
-            right: -200px;
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, rgba(62, 201, 209, 0.03) 40%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -200px;
-            left: -100px;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(209, 136, 62, 0.06) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 420px;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .hero-text h1 {
-            font-family: var(--serif);
-            font-size: clamp(42px, 6vw, 72px);
-            line-height: 1.05;
-            letter-spacing: -2px;
-            margin-bottom: 24px;
-            font-weight: 400;
-        }
-
-        .hero-text h1 em {
-            font-style: italic;
-            color: var(--accent);
-        }
-
-        .hero-text .tagline {
-            font-size: 19px;
-            color: var(--text-muted);
-            max-width: 540px;
-            line-height: 1.8;
-            margin-bottom: 32px;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 28px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-            transition: all var(--transition);
-            border: 1px solid transparent;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: var(--bg);
-            border-color: var(--accent);
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-hover);
-            color: var(--bg);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 24px var(--accent-glow);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--text);
-            border-color: var(--border-accent);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            transform: translateY(-1px);
-        }
-
-        .hero-photo {
-            position: relative;
-        }
-
-        .hero-photo img {
-            width: 100%;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            filter: grayscale(15%) contrast(1.05);
-        }
-
-        .hero-photo::after {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            border-radius: 16px;
-            background: linear-gradient(180deg, transparent 60%, var(--bg));
-            pointer-events: none;
-        }
-
-        section {
-            padding: 100px 32px;
-        }
-
-        .section-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-label {
-            font-family: var(--mono);
-            font-size: 11.5px;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .section-label::before {
-            content: '';
-            width: 24px;
-            height: 1px;
-            background: var(--accent);
-        }
-
-        .section-title {
-            font-family: var(--serif);
-            font-size: clamp(30px, 4vw, 44px);
-            font-weight: 400;
-            letter-spacing: -1px;
-            margin-bottom: 48px;
-            line-height: 1.15;
-        }
-
-        .about-content {
-            max-width: 800px;
-        }
-
-        .about-content p {
-            color: var(--text-muted);
-            line-height: 1.85;
-            font-size: 15.5px;
-        }
-
-        .about-content p+p {
-            margin-top: 16px;
-        }
-
-        .edu-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-
-        .edu-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 32px;
-            transition: all var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .edu-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-2px);
-            background: var(--bg-card-hover);
-        }
-
-        .edu-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent), transparent);
-            opacity: 0;
-            transition: opacity var(--transition);
-        }
-
-        .edu-card:hover::before {
-            opacity: 1;
-        }
-
-        .edu-date {
-            font-family: var(--mono);
-            font-size: 12px;
-            color: var(--accent);
-            letter-spacing: 0.5px;
-            margin-bottom: 12px;
-        }
-
-        .edu-card h3 {
-            font-family: var(--serif);
-            font-size: 22px;
-            font-weight: 400;
-            margin-bottom: 8px;
-        }
-
-        .edu-card .school {
-            color: var(--text-muted);
-            font-size: 14px;
-            margin-bottom: 4px;
-        }
-
-        .edu-card .location {
-            color: var(--text-dim);
-            font-size: 13px;
-            margin-bottom: 4px;
-        }
-
-        .edu-card .gpa {
-            color: var(--accent);
-            font-family: var(--mono);
-            font-size: 13px;
-            margin-bottom: 14px;
-        }
-
-        .edu-card .coursework {
-            color: var(--text-dim);
-            font-size: 13px;
-            line-height: 1.7;
-        }
-
-        .edu-card .coursework strong {
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 20px;
-        }
-
-        .skill-group {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 28px;
-            transition: all var(--transition);
-        }
-
-        .skill-group:hover {
-            border-color: var(--border-accent);
-            background: var(--bg-card-hover);
-        }
-
-        .skill-group h4 {
-            font-family: var(--mono);
-            font-size: 14px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 14px;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .skill-tag {
-            font-size: 12.5px;
-            color: var(--text-muted);
-            padding: 4px 10px;
-            background: rgba(62, 201, 209, 0.04);
-            border-radius: 5px;
-            border: 1px solid rgba(62, 201, 209, 0.08);
-            transition: all var(--transition);
-        }
-
-        .skill-tag:hover {
-            color: var(--text);
-            border-color: var(--accent);
-            background: rgba(62, 201, 209, 0.08);
-        }
-
-        .exp-timeline {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .exp-item {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 40px;
-            padding: 40px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .exp-item:last-child {
-            border-bottom: none;
-        }
-
-        .exp-meta .exp-date {
-            font-family: var(--mono);
-            font-size: 12px;
-            color: var(--accent);
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-        }
-
-        .exp-meta .exp-company {
-            font-family: var(--serif);
-            font-size: 20px;
-            font-weight: 400;
-            margin-bottom: 4px;
-        }
-
-        .exp-meta .exp-location {
-            color: var(--text-dim);
-            font-size: 13px;
-        }
-
-        .exp-body h3 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            letter-spacing: -0.2px;
-        }
-
-        .exp-body ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .exp-body li {
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.75;
-            padding-left: 18px;
-            position: relative;
-        }
-
-        .exp-body li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 10px;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background: var(--accent);
-            opacity: 0.5;
-        }
-
-        .exp-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 16px;
-        }
-
-        .exp-tech span {
-            font-family: var(--mono);
-            font-size: 11px;
-            color: var(--text-dim);
-            padding: 3px 8px;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-        }
-
-        .papers-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .paper-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 32px;
-            transition: all var(--transition);
-        }
-
-        .paper-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        .paper-card h3 {
-            font-family: var(--serif);
-            font-size: 20px;
-            font-weight: 400;
-            margin-bottom: 8px;
-        }
-
-        .paper-venue {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            font-family: var(--mono);
-            letter-spacing: 0.3px;
-        }
-
-        .paper-card p {
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.75;
-            margin-bottom: 8px;
-        }
-
-        .paper-link {
-            font-size: 13px;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .paper-link::after {
-            content: '→';
-            transition: transform var(--transition);
-        }
-
-        .paper-link:hover::after {
-            transform: translateX(3px);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-            gap: 20px;
-        }
-
-        .project-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 28px;
-            transition: all var(--transition);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .project-date {
-            font-family: var(--mono);
-            font-size: 11px;
-            color: var(--text-dim);
-            letter-spacing: 0.5px;
-            margin-bottom: 10px;
-        }
-
-        .project-card h3 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            letter-spacing: -0.2px;
-            line-height: 1.4;
-        }
-
-        .project-card p {
-            color: var(--text-muted);
-            font-size: 13.5px;
-            line-height: 1.7;
-            flex: 1;
-        }
-
-        .project-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid var(--border);
-        }
-
-        .project-stack span {
-            font-family: var(--mono);
-            font-size: 10.5px;
-            color: var(--text-dim);
-            padding: 2px 7px;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-        }
-
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 14px;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .project-link::after {
-            content: '→';
-            transition: transform var(--transition);
-        }
-
-        .project-link:hover::after {
-            transform: translateX(3px);
-        }
-
-        .certs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 16px;
-        }
-
-        .cert-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 24px;
-            transition: all var(--transition);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .cert-card:hover {
-            border-color: var(--border-accent);
-        }
-
-        .cert-card h4 {
-            font-size: 15px;
-            font-weight: 500;
-            margin-bottom: 6px;
-            line-height: 1.4;
-        }
-
-        .cert-issuer {
-            font-size: 13px;
-            color: var(--text-dim);
-            margin-bottom: 10px;
-        }
-
-        .cert-link {
-            font-size: 12.5px;
-            font-weight: 500;
-            margin-top: auto;
-        }
-
-        .contact-section {
-            background: var(--bg-alt);
-            border-top: 1px solid var(--border);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: start;
-        }
-
-        .contact-info h3 {
-            font-family: var(--serif);
-            font-size: 28px;
-            font-weight: 400;
-            margin-bottom: 24px;
-        }
-
-        .contact-info p {
-            color: var(--text-muted);
-            margin-bottom: 8px;
-            font-size: 15px;
-        }
-
-        .contact-info .email-link {
-            font-size: 16px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 12px;
-            margin-top: 24px;
-        }
-
-        .social-links a {
-            width: 42px;
-            height: 42px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            transition: all var(--transition);
-            font-size: 14px;
-        }
-
-        .social-links a:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        footer {
-            text-align: center;
-            padding: 32px;
-            font-size: 13px;
-            color: var(--text-dim);
-            border-top: 1px solid var(--border);
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .stagger-1 {
-            transition-delay: 0.05s;
-        }
-
-        .stagger-2 {
-            transition-delay: 0.1s;
-        }
-
-        .stagger-3 {
-            transition-delay: 0.15s;
-        }
-
-        @media (max-width: 900px) {
-            .hero-inner {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .hero-photo {
-                max-width: 280px;
-            }
-
-            .edu-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .exp-item {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 680px) {
-            .nav-links {
-                display: none;
-            }
-
-            .nav-links.open {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 64px;
-                left: 0;
-                right: 0;
-                background: rgba(11, 15, 20, 0.97);
-                border-bottom: 1px solid var(--border);
-                padding: 16px;
-                gap: 4px;
-            }
-
-            .nav-toggle {
-                display: block;
-            }
-
-            section {
-                padding: 60px 20px;
-            }
-
-            .hero {
-                padding: 80px 20px 40px;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .certs-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinay Jogani — Building ML Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=JetBrains+Mono:wght@400;500&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a;
+  --bg-2:#111111;
+  --fg:#f2f2f0;
+  --muted:#8a8a85;
+  --line:#1f1f1d;
+  --accent:#e8ff5a;
+  --accent-2:#ff5a3c;
+}
+[data-theme="light"]{
+  --bg:#f7f6f1;
+  --bg-2:#ececdf;
+  --fg:#0e0e0c;
+  --muted:#6b6b66;
+  --line:#dcdcd2;
+  --accent:#1a1a1a;
+  --accent-2:#ff5a3c;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--fg);
+  font-family:'Inter Tight',sans-serif;
+  font-weight:400;
+  line-height:1.5;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  cursor:default;
+  transition:background .35s ease, color .35s ease;
+}
+::selection{background:var(--accent);color:#000}
+
+/* grain overlay */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  pointer-events:none;
+  z-index:1000;
+  opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* nav */
+nav{
+  position:fixed;top:0;left:0;right:0;
+  padding:24px 40px;
+  display:flex;justify-content:space-between;align-items:center;
+  z-index:100;
+  mix-blend-mode:difference;
+  transition:padding .3s ease;
+}
+nav.scrolled{padding:16px 40px}
+.logo{
+  font-family:'Fraunces',serif;
+  font-weight:800;
+  font-size:20px;
+  letter-spacing:-.02em;
+  color:#fff;
+  text-decoration:none;
+}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{
+  color:#fff;
+  text-decoration:none;
+  font-size:11px;
+  letter-spacing:.15em;
+  font-weight:500;
+  text-transform:uppercase;
+  transition:opacity .2s;
+}
+.nav-links a:hover{opacity:.6}
+.nav-socials{display:flex;gap:14px;margin-left:24px;align-items:center}
+.nav-socials a{
+  width:20px;height:20px;
+  display:inline-flex;align-items:center;justify-content:center;
+  color:#fff;
+  transition:opacity .2s, transform .2s;
+}
+.nav-socials a:hover{opacity:.7;transform:translateY(-2px)}
+.nav-socials svg{width:18px;height:18px;fill:currentColor}
+
+.theme-toggle{
+  background:transparent;
+  border:1px solid currentColor;
+  color:#fff;
+  width:36px;height:36px;
+  border-radius:50%;
+  cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:14px;
+  margin-left:16px;
+  transition:transform .3s ease;
+  padding:0;
+}
+.theme-toggle:hover{transform:rotate(15deg)}
+.theme-toggle .icon-sun,.theme-toggle .icon-moon{
+  display:block;
+  width:14px;height:14px;
+}
+.theme-toggle .icon-sun{display:none}
+[data-theme="light"] .theme-toggle .icon-sun{display:block}
+[data-theme="light"] .theme-toggle .icon-moon{display:none}
+
+@media(max-width:768px){
+  nav{padding:20px}
+  .nav-links{gap:18px}
+  .nav-socials{display:none}
+  .nav-links a:not(.menu-essential){display:none}
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:120px 40px 80px;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(232,255,90,.08), transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(255,90,60,.06), transparent 50%),
+    linear-gradient(180deg,var(--bg) 0%, var(--bg-2) 100%);
+  z-index:0;
+  transition:background .35s ease;
+}
+[data-theme="light"] .hero-bg{
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(255,90,60,.08), transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(26,26,26,.06), transparent 50%),
+    linear-gradient(180deg,var(--bg) 0%, var(--bg-2) 100%);
+}
+.hero-img{
+  position:absolute;
+  right:-5%;top:50%;
+  transform:translateY(-50%);
+  width:55%;
+  max-width:700px;
+  aspect-ratio:1;
+  border-radius:50%;
+  background-image:url('https://static.wixstatic.com/media/327f52_f0f8f477286a4d29bbb0abb08376392d~mv2.jpg/v1/crop/x_107,y_9,w_1287,h_1394/fill/w_800,h_866,al_c,q_85,enc_avif,quality_auto/Vinay_edited.jpg');
+  background-size:cover;
+  background-position:center;
+  filter:grayscale(.4) contrast(1.05);
+  opacity:.85;
+  mask-image:radial-gradient(ellipse at center, #000 50%, transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse at center, #000 50%, transparent 75%);
+  z-index:1;
+}
+.hero-content{position:relative;z-index:2;max-width:1400px;margin:0 auto;width:100%}
+.hero-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:15px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:28px;
+  display:flex;align-items:center;gap:14px;
+}
+.hero-eyebrow::before{
+  content:'';width:40px;height:1px;background:var(--accent);
+}
+.hero-title{
+  font-family:'Fraunces',serif;
+  font-weight:800;
+  font-size:clamp(72px, 14vw, 220px);
+  line-height:.85;
+  letter-spacing:-.04em;
+  text-transform:uppercase;
+  margin-bottom:32px;
+}
+.hero-name{
+  font-family:'Fraunces',serif;
+  font-weight:800;
+  font-size:clamp(64px, 13vw, 200px);
+  line-height:.85;
+  letter-spacing:-.04em;
+  text-transform:uppercase;
+  margin-bottom:20px;
+}
+.hero-name .italic{font-style:italic;font-weight:400;color:var(--accent)}
+.hero-title .accent{
+  font-style:italic;
+  font-weight:400;
+  color:var(--accent);
+}
+.hero-sub{
+  font-family:'Fraunces',serif;
+  font-size:clamp(22px,2vw,32px);
+  font-weight:400;
+  font-style:italic;
+  max-width:640px;
+  color:#d0d0cc;
+  margin-bottom:40px;
+  line-height:1.4;
+  letter-spacing:-.01em;
+}
+[data-theme="light"] .hero-sub{color:#2a2a26}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:16px 28px;
+  border:1px solid var(--fg);
+  color:var(--fg);
+  text-decoration:none;
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  font-weight:500;
+  transition:all .25s ease;
+  background:transparent;
+}
+.btn:hover{background:var(--fg);color:var(--bg)}
+.btn.primary{background:var(--accent);color:#000;border-color:var(--accent)}
+.btn.primary:hover{background:transparent;color:var(--accent)}
+.btn .arrow{transition:transform .25s ease}
+.btn:hover .arrow{transform:translateX(4px)}
+
+.scroll-cue{
+  position:absolute;bottom:30px;right:40px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  letter-spacing:.25em;
+  color:var(--muted);
+  text-transform:uppercase;
+  z-index:2;
+  writing-mode:vertical-rl;
+  display:flex;align-items:center;gap:12px;
+}
+.scroll-cue::after{
+  content:'';
+  width:1px;height:40px;
+  background:linear-gradient(180deg,var(--muted),transparent);
+  animation:scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse{
+  0%,100%{opacity:.3;transform:scaleY(.7)}
+  50%{opacity:1;transform:scaleY(1)}
+}
+
+/* marquee strip */
+.marquee{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:20px 0;
+  overflow:hidden;
+  background:var(--bg-2);
+}
+.marquee-track{
+  display:flex;gap:60px;
+  animation:scroll 40s linear infinite;
+  white-space:nowrap;
+}
+.marquee span{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:24px;
+  color:var(--muted);
+  font-weight:400;
+}
+.marquee span.dot{color:var(--accent);font-style:normal}
+@keyframes scroll{
+  to{transform:translateX(-50%)}
+}
+
+/* SECTIONS */
+section{padding:120px 40px;position:relative}
+.container{max-width:1400px;margin:0 auto}
+.section-head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:80px;
+  flex-wrap:wrap;gap:20px;
+  border-bottom:1px solid var(--line);
+  padding-bottom:24px;
+}
+.section-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.25em;
+  color:var(--muted);
+  text-transform:uppercase;
+  display:flex;align-items:center;gap:12px;
+}
+.section-label::before{
+  content:'';width:8px;height:8px;background:var(--accent);border-radius:50%;
+}
+.section-title{
+  font-family:'Fraunces',serif;
+  font-weight:800;
+  font-size:clamp(40px,6vw,84px);
+  letter-spacing:-.03em;
+  line-height:.95;
+  text-transform:uppercase;
+  flex:1;
+  min-width:300px;
+}
+.section-title.xl{
+  font-size:clamp(52px,8vw,120px);
+}
+.section-title .italic{font-style:italic;font-weight:400}
+
+/* ABOUT */
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:start;
+}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:40px}}
+.about-text p{
+  font-family:'Inter Tight',sans-serif;
+  font-size:18px;
+  font-weight:400;
+  line-height:1.65;
+  margin-bottom:24px;
+  color:#d0d0cc;
+}
+.about-text p:last-child{margin-bottom:0}
+.about-stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+}
+.stat{
+  background:var(--bg);
+  padding:40px 32px;
+}
+.stat-num{
+  font-family:'Fraunces',serif;
+  font-weight:800;
+  font-size:clamp(48px, 6vw, 72px);
+  letter-spacing:-.03em;
+  color:var(--accent);
+  line-height:1;
+  margin-bottom:12px;
+}
+.stat-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+@media(max-width:480px){
+  .about-stats{grid-template-columns:1fr}
+}
+
+/* EDUCATION */
+.edu-list{display:flex;flex-direction:column;gap:0}
+.edu-item{
+  display:grid;
+  grid-template-columns:200px 1fr auto;
+  gap:40px;
+  padding:40px 0;
+  border-bottom:1px solid var(--line);
+  align-items:center;
+  transition:padding .3s ease;
+}
+.edu-item:hover{padding-left:20px}
+.edu-date{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  color:var(--muted);
+  letter-spacing:.05em;
+}
+.edu-body h3{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:28px;
+  letter-spacing:-.02em;
+  margin-bottom:8px;
+}
+.edu-body .school{color:var(--muted);font-size:15px;margin-bottom:4px}
+.edu-body .coursework{font-size:13px;color:#a8a8a3;margin-top:12px;line-height:1.5}
+.edu-link{
+  color:var(--accent);text-decoration:none;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:.15em;text-transform:uppercase;
+  white-space:nowrap;
+}
+.edu-link:hover{text-decoration:underline}
+@media(max-width:768px){
+  .edu-item{grid-template-columns:1fr;gap:12px;padding:32px 0}
+  .edu-item:hover{padding-left:0}
+}
+
+/* SKILLS */
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+}
+.skill-cat{
+  background:var(--bg);
+  padding:32px 28px;
+  transition:background .3s ease;
+}
+.skill-cat:hover{background:var(--bg-2)}
+.skill-cat h4{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:20px;
+}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px}
+.skill-tags span{
+  display:inline-block;
+  padding:6px 12px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  font-size:12px;
+  color:#d0d0cc;
+  transition:all .2s ease;
+  background:var(--bg-2);
+}
+.skill-tags span:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+  transform:translateY(-2px);
+}
+
+/* EXPERIENCE */
+.exp-list{display:flex;flex-direction:column;gap:0}
+.exp-item{
+  display:grid;
+  grid-template-columns:200px 1fr;
+  gap:40px;
+  padding:48px 0;
+  border-bottom:1px solid var(--line);
+  position:relative;
+  transition:transform .3s ease;
+}
+.exp-item:hover{transform:translateX(8px)}
+.exp-meta{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.6;
+}
+.exp-meta .company{color:var(--fg);font-family:'Inter Tight',sans-serif;font-size:14px;margin-top:8px}
+.exp-body h3{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:32px;
+  letter-spacing:-.02em;
+  margin-bottom:20px;
+}
+.exp-body ul{list-style:none;padding:0;margin-bottom:20px}
+.exp-body li{
+  padding-left:24px;
+  position:relative;
+  margin-bottom:14px;
+  font-size:15px;
+  line-height:1.65;
+  color:#c8c8c2;
+}
+.exp-body li::before{
+  content:'';
+  position:absolute;left:0;top:10px;
+  width:12px;height:1px;
+  background:var(--accent);
+}
+.exp-tech{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.exp-tech span{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  color:var(--muted);
+  padding:4px 10px;
+  background:var(--bg-2);
+  border-radius:3px;
+}
+@media(max-width:768px){
+  .exp-item{grid-template-columns:1fr;gap:16px}
+  .exp-item:hover{transform:none}
+}
+
+/* PAPERS */
+.papers-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:0;
+  border:1px solid var(--line);
+}
+.paper{
+  padding:48px;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  transition:background .3s ease;
+  position:relative;
+  overflow:hidden;
+}
+.paper:nth-child(2n){border-right:none}
+.paper:nth-last-child(-n+2){border-bottom:none}
+.paper:hover{background:var(--bg-2)}
+.paper::after{
+  content:'→';
+  position:absolute;top:48px;right:48px;
+  font-size:24px;
+  color:var(--muted);
+  transition:all .3s ease;
+}
+.paper:hover::after{color:var(--accent);transform:translate(4px,-4px)}
+.paper-venue{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:16px;
+}
+.paper h3{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:24px;
+  letter-spacing:-.02em;
+  line-height:1.2;
+  margin-bottom:16px;
+  padding-right:60px;
+}
+.paper p{
+  color:#a8a8a3;
+  font-size:14px;
+  line-height:1.6;
+  margin-bottom:20px;
+}
+.paper a{
+  color:var(--fg);
+  text-decoration:none;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  border-bottom:1px solid var(--line);
+  padding-bottom:4px;
+}
+.paper a:hover{border-color:var(--accent);color:var(--accent)}
+@media(max-width:768px){
+  .papers-grid{grid-template-columns:1fr}
+  .paper{border-right:none!important;padding:32px}
+  .paper:nth-last-child(-n+2){border-bottom:1px solid var(--line)}
+  .paper:last-child{border-bottom:none}
+}
+
+/* PROJECTS */
+.proj-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(420px,1fr));
+  gap:24px;
+}
+.proj{
+  background:var(--bg-2);
+  border:1px solid var(--line);
+  padding:36px;
+  text-decoration:none;
+  color:var(--fg);
+  position:relative;
+  overflow:hidden;
+  transition:all .35s ease;
+  display:flex;flex-direction:column;
+  min-height:280px;
+}
+.proj::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:100%;height:2px;
+  background:var(--accent);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .4s ease;
+}
+.proj:hover::before{transform:scaleX(1)}
+.proj:hover{background:var(--bg-2);transform:translateY(-4px);filter:brightness(1.05)}
+.proj-date{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:16px;
+}
+.proj h3{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:26px;
+  letter-spacing:-.02em;
+  line-height:1.2;
+  margin-bottom:14px;
+}
+.proj p{
+  font-size:14px;
+  line-height:1.6;
+  color:#b8b8b3;
+  margin-bottom:20px;
+  flex:1;
+}
+.proj-tech{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.proj-tech span{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  color:var(--muted);
+  padding:4px 9px;
+  background:var(--bg);
+  border-radius:3px;
+}
+.proj-link{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--accent);
+  display:inline-flex;align-items:center;gap:8px;
+}
+.proj-link .arrow{transition:transform .25s ease}
+.proj:hover .proj-link .arrow{transform:translateX(4px)}
+
+.show-more-wrap{text-align:center;margin-top:48px}
+.show-more{
+  background:transparent;border:1px solid var(--line);
+  color:var(--fg);padding:14px 28px;cursor:pointer;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  transition:all .25s;
+}
+.show-more:hover{border-color:var(--accent);color:var(--accent)}
+.proj.hidden{display:none}
+
+/* CERTIFICATES */
+.cert-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+}
+.cert{
+  background:var(--bg);
+  padding:28px;
+  text-decoration:none;
+  color:var(--fg);
+  transition:background .3s ease;
+  display:flex;flex-direction:column;justify-content:space-between;
+  min-height:160px;
+}
+.cert:hover{background:var(--bg-2)}
+.cert h4{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:18px;
+  letter-spacing:-.01em;
+  line-height:1.3;
+  margin-bottom:8px;
+}
+.cert .issuer{
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:16px;
+}
+.cert .view{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+
+/* CONTACT */
+.contact{
+  background:var(--bg-2);
+  padding:120px 40px;
+  border-top:1px solid var(--line);
+}
+.contact-inner{max-width:1400px;margin:0 auto}
+.contact-title{
+  font-family:'Fraunces',serif;
+  font-weight:800;
+  font-size:clamp(48px,9vw,140px);
+  letter-spacing:-.04em;
+  line-height:.9;
+  text-transform:uppercase;
+  margin-bottom:40px;
+}
+.contact-title .italic{font-style:italic;font-weight:400;color:var(--accent)}
+.contact-sub{
+  font-size:20px;
+  color:#c8c8c2;
+  max-width:600px;
+  line-height:1.5;
+  margin-bottom:48px;
+}
+.contact-info{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:32px;
+  padding:48px 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  margin-bottom:48px;
+}
+.contact-info .info-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:8px;
+}
+.contact-info .info-val{
+  font-size:18px;
+  color:var(--fg);
+}
+.contact-info a{color:var(--fg);text-decoration:none;border-bottom:1px solid var(--line);transition:border-color .2s}
+.contact-info a:hover{border-color:var(--accent)}
+
+.contact-socials{display:flex;flex-wrap:wrap;gap:12px}
+.social-btn{
+  padding:14px 22px;
+  border:1px solid var(--line);
+  color:var(--fg);
+  text-decoration:none;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  transition:all .25s;
+}
+.social-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+footer{
+  padding:40px;
+  text-align:center;
+  color:var(--muted);
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:.15em;
+  border-top:1px solid var(--line);
+}
+
+/* reveal animation */
+.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity .8s ease, transform .8s ease;
+}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* responsive hero img */
+@media(max-width:900px){
+  .hero-img{width:80%;right:-20%;opacity:.4}
+  .scroll-cue{display:none}
+}
+</style>
 </head>
-
 <body>
 
-    <nav>
-        <div class="nav-inner">
-            <a href="#" class="nav-logo">Vinay Jogani</a>
-            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')"
-                aria-label="Toggle menu">☰</button>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#education">Education</a>
-                <a href="#skills">Skills</a>
-                <a href="#experience">Experience</a>
-                <a href="#papers">Papers</a>
-                <a href="#projects">Projects</a>
-                <a href="#certificates">Certificates</a>
-                <a href="#contact">Contact</a>
-            </div>
+<nav id="nav">
+  <a href="#" class="logo">VJ</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Work</a>
+    <a href="#projects">Projects</a>
+    <a href="#papers">Writing</a>
+    <a href="#contact" class="menu-essential">Contact</a>
+    <div class="nav-socials">
+      <a href="https://github.com/VinayJogani14" target="_blank" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/vinayjogani/" target="_blank" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-img"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">San Francisco, CA</div>
+    <h1 class="hero-name">Vinay<br><span class="italic">Jogani</span></h1>
+    <p class="hero-sub">From <span style="color:var(--accent);font-style:normal;font-family:'Inter Tight',sans-serif;font-weight:500;letter-spacing:-.01em">ideation</span> to <span style="color:var(--accent);font-style:normal;font-family:'Inter Tight',sans-serif;font-weight:500;letter-spacing:-.01em">production</span>.</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn primary">See the work <span class="arrow">→</span></a>
+      <a href="https://vinayjogani14.github.io/Vinay%20Jogani_Resume.pdf" class="btn" target="_blank">Resume</a>
+      <a href="mailto:joganivinay@gmail.com" class="btn">Get in touch</a>
+    </div>
+  </div>
+  <div class="scroll-cue">scroll</div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Machine Learning</span><span class="dot">●</span>
+    <span>Data Engineering</span><span class="dot">●</span>
+    <span>NLP & LLMs</span><span class="dot">●</span>
+    <span>Quantitative Finance</span><span class="dot">●</span>
+    <span>Medical AI</span><span class="dot">●</span>
+    <span>MLOps</span><span class="dot">●</span>
+    <span>Machine Learning</span><span class="dot">●</span>
+    <span>Data Engineering</span><span class="dot">●</span>
+    <span>NLP & LLMs</span><span class="dot">●</span>
+    <span>Quantitative Finance</span><span class="dot">●</span>
+    <span>Medical AI</span><span class="dot">●</span>
+    <span>MLOps</span><span class="dot">●</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label">01 / About</div>
+      <h2 class="section-title">Building <span class="italic">impactful</span><br>data & ML solutions.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I build end-to-end systems, from scalable data pipelines to production ML, across healthcare, finance, and enterprise domains.</p>
+        <p>MS in Information Systems from Northeastern University (graduated August 2025), B.Tech from VJTI Mumbai. My work spans deep learning for medical imaging at Brigham and Women's Hospital and Northeastern Amal Lab, NLP pipelines for clinical trials, quantitative finance modeling, and enterprise automation at HCL Technologies.</p>
+        <p>Proficient in Python, PyTorch, TensorFlow, Spark, AWS/GCP, and MLOps tooling. I've published peer-reviewed papers on explainable AI, adversarial robustness, and deep learning at international IEEE conferences.</p>
+      </div>
+      <div class="about-stats reveal">
+        <div class="stat"><div class="stat-num">4</div><div class="stat-label">Peer-reviewed papers</div></div>
+        <div class="stat"><div class="stat-num">25+</div><div class="stat-label">Production projects</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label">02 / Education</div>
+      <h2 class="section-title xl">Academic <span class="italic">background</span></h2>
+    </div>
+    <div class="edu-list">
+      <div class="edu-item reveal">
+        <div class="edu-date">Sep 2023 — Aug 2025</div>
+        <div class="edu-body">
+          <h3>MS, Information Systems</h3>
+          <div class="school">Northeastern University · Boston, MA · GPA 3.64</div>
+          <div class="coursework">Advance Data Science & Architecture · Parallel ML & AI · LLM with Knowledge Graph DB · Natural Language Engineering · AI Generative Modeling in Finance</div>
         </div>
-    </nav>
-
-    <section class="hero" id="top">
-        <div class="hero-inner">
-            <div class="hero-text fade-in">
-                <h1>Vinay<br>Jogani</h1>
-                <p class="tagline">MS in Information Systems, Northeastern University. Passionate about data science,
-                    deep learning, computer vision, and their applications in healthcare and finance.</p>
-                <div class="hero-actions">
-                    <a href="./Vinay%20Jogani_Resume.pdf" class="btn btn-primary" target="_blank" style="justify-content:center;">Resume</a>
-                    <a href="#contact" class="btn btn-outline">Get in Touch</a>
-                    <a href="https://github.com/VinayJogani14" class="btn btn-outline" target="_blank">GitHub</a>
-                </div>
-            </div>
-            <div class="hero-photo fade-in stagger-2">
-                <img src="https://static.wixstatic.com/media/327f52_f0f8f477286a4d29bbb0abb08376392d~mv2.jpg/v1/crop/x_107,y_9,w_1287,h_1394/fill/w_434,h_470,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Vinay_edited.jpg"
-                    alt="Vinay Jogani" />
-            </div>
+        <a href="https://e4ace130-7adb-46e0-8246-2a9ee1004da9.filesusr.com/ugd/327f52_7102c5d7477d45d9a0bd1f0a33d17b4d.pdf" class="edu-link" target="_blank">View →</a>
+      </div>
+      <div class="edu-item reveal">
+        <div class="edu-date">Aug 2019 — May 2023</div>
+        <div class="edu-body">
+          <h3>B.Tech, Information Technology</h3>
+          <div class="school">Veermata Jijabai Technological Institute · Mumbai · GPA 7.49</div>
+          <div class="coursework">DSA · Linear Algebra · Discrete Math · AI · Machine Learning · Data Architecture · Network Security · Big Data · Computer Networks · OS</div>
         </div>
-    </section>
+        <a href="https://e4ace130-7adb-46e0-8246-2a9ee1004da9.filesusr.com/ugd/327f52_d095d1c8c47b4af8a10954072d00ebe4.pdf" class="edu-link" target="_blank">View →</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- ABOUT -->
-    <section id="about">
-        <div class="section-inner">
-            <div class="section-label fade-in">About</div>
-            <h2 class="section-title fade-in">Building impactful, scalable<br>data &amp; ML solutions</h2>
-            <div class="about-content fade-in">
-                <p>Data & ML professional with an MS in Information Systems from Northeastern University and a B.Tech
-                    from VJTI Mumbai. I build end-to-end solutions — from scalable data pipelines to production ML
-                    systems — across healthcare, finance, and enterprise domains.</p>
-                <p>My work spans deep learning for medical imaging (Brigham & Women's Hospital, Northeastern Amal Lab),
-                    NLP pipelines for clinical trials, quantitative finance modeling, and enterprise automation (HCL
-                    Technologies). Proficient in Python, PyTorch, TensorFlow, Spark, AWS/GCP, and MLOps tooling. I've
-                    published peer-reviewed papers on explainable AI, adversarial robustness, and deep learning at
-                    international IEEE conferences.</p>
-            </div>
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label">03 / Skills</div>
+      <h2 class="section-title xl">Technical <span class="italic">toolkit</span></h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-cat reveal"><h4>Languages</h4><div class="skill-tags"><span>Python</span><span>SQL</span><span>C++</span><span>Java</span><span>R</span><span>JavaScript</span><span>MATLAB</span><span>Cypher</span></div></div>
+      <div class="skill-cat reveal"><h4>Machine Learning & AI</h4><div class="skill-tags"><span>TensorFlow</span><span>PyTorch</span><span>Keras</span><span>Scikit-learn</span><span>XGBoost</span><span>LightGBM</span><span>Stable-Baselines3</span><span>OpenAI Gym</span><span>Optuna</span></div></div>
+      <div class="skill-cat reveal"><h4>Deep Learning</h4><div class="skill-tags"><span>CNN</span><span>LSTM</span><span>GRU</span><span>ResNet</span><span>DenseNet</span><span>EfficientNet</span><span>Vision Transformers</span><span>DQN</span><span>PPO</span><span>Multi-GPU DDP</span></div></div>
+      <div class="skill-cat reveal"><h4>NLP & LLMs</h4><div class="skill-tags"><span>BERT</span><span>RoBERTa</span><span>CodeT5</span><span>Hugging Face</span><span>spaCy</span><span>NLTK</span><span>RAG</span><span>FAISS</span><span>NER</span></div></div>
+      <div class="skill-cat reveal"><h4>Data Engineering</h4><div class="skill-tags"><span>Apache Spark</span><span>PySpark</span><span>Kafka</span><span>Airflow</span><span>dbt</span><span>Dask</span><span>Great Expectations</span><span>Medallion Arch</span></div></div>
+      <div class="skill-cat reveal"><h4>Databases</h4><div class="skill-tags"><span>PostgreSQL</span><span>MySQL</span><span>MongoDB</span><span>Neo4j</span><span>Snowflake</span><span>BigQuery</span><span>Redis</span><span>FAISS</span></div></div>
+      <div class="skill-cat reveal"><h4>Cloud & MLOps</h4><div class="skill-tags"><span>AWS</span><span>GCP</span><span>MLflow</span><span>Docker</span><span>Kubernetes</span><span>GitHub Actions</span><span>Terraform</span><span>Prometheus</span><span>Grafana</span></div></div>
+      <div class="skill-cat reveal"><h4>Data Science</h4><div class="skill-tags"><span>NumPy</span><span>Pandas</span><span>SciPy</span><span>A/B Testing</span><span>PCA</span><span>t-SNE</span><span>UMAP</span><span>Causal Inference</span><span>Monte Carlo</span></div></div>
+      <div class="skill-cat reveal"><h4>Computer Vision</h4><div class="skill-tags"><span>OpenCV</span><span>torchvision</span><span>scikit-image</span><span>Grad-CAM</span><span>Segmentation</span><span>Object Detection</span></div></div>
+      <div class="skill-cat reveal"><h4>Software Engineering</h4><div class="skill-tags"><span>FastAPI</span><span>Flask</span><span>REST APIs</span><span>Microservices</span><span>Git</span><span>pytest</span><span>Agile/Scrum</span></div></div>
+      <div class="skill-cat reveal"><h4>Quantitative Finance</h4><div class="skill-tags"><span>Portfolio Opt</span><span>Options Pricing</span><span>Sharpe / VaR</span><span>ARIMA / GARCH</span><span>yFinance</span><span>Bloomberg API</span></div></div>
+      <div class="skill-cat reveal"><h4>Explainable AI</h4><div class="skill-tags"><span>LIME</span><span>SHAP</span><span>Adversarial Training</span><span>ART Toolbox</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label">04 / Experience</div>
+      <h2 class="section-title xl">Professional <span class="italic">journey</span></h2>
+    </div>
+    <div class="exp-list">
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          Jun 2024 — Aug 2025<br>
+          <div class="company">Northeastern University<br>Boston, MA</div>
         </div>
-    </section>
-
-    <!-- EDUCATION -->
-    <section id="education" style="background: var(--bg-alt);">
-        <div class="section-inner">
-            <div class="section-label fade-in">Education</div>
-            <h2 class="section-title fade-in">Academic Background</h2>
-            <div class="edu-grid">
-                <div class="edu-card fade-in">
-                    <div class="edu-date">Sep 2023 — Aug 2025</div>
-                    <h3>Master of Science in Information Systems</h3>
-                    <div class="school">Northeastern University</div>
-                    <div class="location">Boston, MA</div>
-                    <div class="gpa">GPA: 3.64 / 4.0</div>
-                    <div class="coursework"><strong>Coursework:</strong> Advance Data Science & Architecture, Parallel
-                        Machine Learning & AI, LLM w/ Knowledge Graph DB, Natural Language Engineering, AI Generative
-                        Modeling with focus in Finance</div>
-                    <br><a
-                        href="https://e4ace130-7adb-46e0-8246-2a9ee1004da9.filesusr.com/ugd/327f52_7102c5d7477d45d9a0bd1f0a33d17b4d.pdf"
-                        class="paper-link" target="_blank">View Degree</a>
-                </div>
-                <div class="edu-card fade-in stagger-1">
-                    <div class="edu-date">Aug 2019 — May 2023</div>
-                    <h3>B.Tech in Information Technology</h3>
-                    <div class="school">Veermata Jijabai Technological Institute</div>
-                    <div class="location">Mumbai, India</div>
-                    <div class="gpa">GPA: 7.49 / 10</div>
-                    <div class="coursework"><strong>Coursework:</strong> Data Structures & Algo, Linear Algebra,
-                        Discrete Mathematics, AI, Machine Learning, Data Architecture, Network Security, Big Data
-                        Analysis, Computer Networks, Operating Systems</div>
-                    <br><a
-                        href="https://e4ace130-7adb-46e0-8246-2a9ee1004da9.filesusr.com/ugd/327f52_d095d1c8c47b4af8a10954072d00ebe4.pdf"
-                        class="paper-link" target="_blank">View Degree</a>
-                </div>
-            </div>
+        <div class="exp-body">
+          <h3>AI/ML Research Assistant, Amal Lab</h3>
+          <ul>
+            <li>Built a Med-SAM segmentation system for MRI, CT, and histopathology images, improving organ and lesion boundary detection used by clinical researchers to accelerate diagnostic annotation workflows.</li>
+            <li>Processed 18TB+ of TCGA multi-omics data (RNA-Seq, methylation, CNV) across 33 cancer types using Spark and Dask, surfacing novel biomarker clusters that informed downstream survival analysis studies.</li>
+            <li>Trained and validated a skin cancer classifier reaching 97.28% accuracy across four architectures (ResNet-34, EfficientNet-B1, VGG16, ViT), delivering a production-ready model externally validated on three independent datasets.</li>
+          </ul>
+          <div class="exp-tech"><span>PyTorch</span><span>TensorFlow</span><span>Hugging Face</span><span>OpenCV</span><span>Dask</span><span>Apache Spark</span></div>
         </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills">
-        <div class="section-inner">
-            <div class="section-label fade-in">Skills</div>
-            <h2 class="section-title fade-in">Technical Toolkit</h2>
-            <div class="skills-grid">
-                <div class="skill-group fade-in">
-                    <h4>Programming Languages</h4>
-                    <div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span
-                            class="skill-tag">C++</span><span class="skill-tag">Java</span><span
-                            class="skill-tag">R</span><span class="skill-tag">JavaScript</span><span
-                            class="skill-tag">MATLAB</span><span class="skill-tag">Cypher</span></div>
-                </div>
-                <div class="skill-group fade-in stagger-1">
-                    <h4>Machine Learning & AI</h4>
-                    <div class="skill-tags"><span class="skill-tag">TensorFlow</span><span
-                            class="skill-tag">PyTorch</span><span class="skill-tag">Keras</span><span
-                            class="skill-tag">Scikit-learn</span><span class="skill-tag">XGBoost</span><span
-                            class="skill-tag">LightGBM</span><span class="skill-tag">Stable-Baselines3</span><span
-                            class="skill-tag">OpenAI Gym</span><span class="skill-tag">Optuna</span><span
-                            class="skill-tag">Transfer Learning</span><span class="skill-tag">Reinforcement
-                            Learning</span></div>
-                </div>
-                <div class="skill-group fade-in stagger-2">
-                    <h4>Deep Learning</h4>
-                    <div class="skill-tags"><span class="skill-tag">CNN</span><span class="skill-tag">LSTM</span><span
-                            class="skill-tag">GRU</span><span class="skill-tag">ResNet</span><span
-                            class="skill-tag">DenseNet</span><span class="skill-tag">EfficientNet</span><span
-                            class="skill-tag">VGG</span><span class="skill-tag">Vision Transformers</span><span
-                            class="skill-tag">DQN</span><span class="skill-tag">PPO</span><span
-                            class="skill-tag">Multi-GPU Training</span></div>
-                </div>
-                <div class="skill-group fade-in">
-                    <h4>NLP</h4>
-                    <div class="skill-tags"><span class="skill-tag">BERT</span><span
-                            class="skill-tag">RoBERTa</span><span class="skill-tag">Hugging Face</span><span
-                            class="skill-tag">NLTK</span><span class="skill-tag">spaCy</span><span
-                            class="skill-tag">CodeT5</span><span class="skill-tag">VADER</span><span
-                            class="skill-tag">NER</span></div>
-                </div>
-                <div class="skill-group fade-in stagger-1">
-                    <h4>Data Engineering & ETL</h4>
-                    <div class="skill-tags"><span class="skill-tag">Apache Spark</span><span
-                            class="skill-tag">PySpark</span><span class="skill-tag">Kafka</span><span
-                            class="skill-tag">Airflow</span><span class="skill-tag">dbt</span><span
-                            class="skill-tag">Hadoop</span><span class="skill-tag">Dask</span><span
-                            class="skill-tag">Great Expectations</span><span class="skill-tag">Medallion
-                            Architecture</span></div>
-                </div>
-                <div class="skill-group fade-in stagger-2">
-                    <h4>Databases</h4>
-                    <div class="skill-tags"><span class="skill-tag">PostgreSQL</span><span
-                            class="skill-tag">MySQL</span><span class="skill-tag">MongoDB</span><span
-                            class="skill-tag">Neo4j</span><span class="skill-tag">Snowflake</span><span
-                            class="skill-tag">BigQuery</span><span class="skill-tag">Redis</span><span
-                            class="skill-tag">FAISS</span><span class="skill-tag">SQLAlchemy</span></div>
-                </div>
-                <div class="skill-group fade-in">
-                    <h4>Cloud & MLOps</h4>
-                    <div class="skill-tags"><span class="skill-tag">AWS (EC2, S3, Lambda)</span><span
-                            class="skill-tag">GCP (BigQuery, GCS)</span><span class="skill-tag">MLflow</span><span
-                            class="skill-tag">Docker</span><span class="skill-tag">Kubernetes</span><span
-                            class="skill-tag">GitHub Actions</span><span class="skill-tag">Terraform</span><span
-                            class="skill-tag">Prometheus</span><span class="skill-tag">Grafana</span></div>
-                </div>
-                <div class="skill-group fade-in stagger-1">
-                    <h4>Data Science & Analytics</h4>
-                    <div class="skill-tags"><span class="skill-tag">NumPy</span><span
-                            class="skill-tag">Pandas</span><span class="skill-tag">SciPy</span><span
-                            class="skill-tag">A/B Testing</span><span class="skill-tag">PCA</span><span
-                            class="skill-tag">t-SNE</span><span class="skill-tag">UMAP</span><span
-                            class="skill-tag">Causal Inference</span><span class="skill-tag">Monte Carlo</span><span
-                            class="skill-tag">Time Series Forecasting</span></div>
-                </div>
-                <div class="skill-group fade-in stagger-2">
-                    <h4>Computer Vision</h4>
-                    <div class="skill-tags"><span class="skill-tag">OpenCV</span><span
-                            class="skill-tag">torchvision</span><span class="skill-tag">scikit-image</span><span
-                            class="skill-tag">Grad-CAM</span><span class="skill-tag">Image Segmentation</span><span
-                            class="skill-tag">Object Detection</span></div>
-                </div>
-                <div class="skill-group fade-in">
-                    <h4>Software Engineering</h4>
-                    <div class="skill-tags"><span class="skill-tag">FastAPI</span><span
-                            class="skill-tag">Flask</span><span class="skill-tag">REST APIs</span><span
-                            class="skill-tag">Microservices</span><span class="skill-tag">Git</span><span
-                            class="skill-tag">pytest</span><span class="skill-tag">Agile/Scrum</span></div>
-                </div>
-                <div class="skill-group fade-in stagger-1">
-                    <h4>Quantitative Finance</h4>
-                    <div class="skill-tags"><span class="skill-tag">Portfolio Optimization</span><span
-                            class="skill-tag">Options Pricing</span><span class="skill-tag">Sharpe / VaR</span><span
-                            class="skill-tag">ARIMA / GARCH</span><span class="skill-tag">yFinance</span><span
-                            class="skill-tag">Bloomberg API</span></div>
-                </div>
-                <div class="skill-group fade-in stagger-2">
-                    <h4>Explainable AI & Security</h4>
-                    <div class="skill-tags"><span class="skill-tag">LIME</span><span class="skill-tag">SHAP</span><span
-                            class="skill-tag">Adversarial Training</span><span class="skill-tag">Adversarial Robustness
-                            Toolbox</span></div>
-                </div>
-            </div>
+      </div>
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          Aug 2024 — Dec 2024<br>
+          <div class="company">Brigham and Women's Hospital<br>Boston, MA</div>
         </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" style="background: var(--bg-alt);">
-        <div class="section-inner">
-            <div class="section-label fade-in">Experience</div>
-            <h2 class="section-title fade-in">Professional Journey</h2>
-            <div class="exp-timeline">
-
-                <div class="exp-item fade-in">
-                    <div class="exp-meta">
-                        <div class="exp-date">Jun 2024 — Aug 2025</div>
-                        <div class="exp-company">Northeastern University</div>
-                        <div class="exp-location">Boston, MA</div>
-                    </div>
-                    <div class="exp-body">
-                        <h3>AI/ML Research Assistant</h3>
-                        <ul>
-                            <li>Built a Med-SAM segmentation system for MRI, CT, and histopathology images, improving
-                                organ and lesion boundary detection used by clinical researchers to accelerate
-                                diagnostic annotation workflows</li>
-                            <li>Processed 18TB+ of TCGA multi-omics data (RNA-Seq, methylation, CNV) across 33 cancer
-                                types using Spark and Dask, surfacing novel biomarker clusters that informed downstream
-                                survival analysis studies</li>
-                            <li>Trained and validated a skin cancer classifier reaching 97.28% accuracy across four
-                                architectures (ResNet-34, EfficientNet-B1, VGG16, ViT), delivering a production-ready
-                                model externally validated on three independent datasets</li>
-                        </ul>
-                        <div class="exp-tech"><span>PyTorch</span><span>TensorFlow</span><span>Hugging
-                                Face</span><span>OpenCV</span><span>Dask</span><span>Apache Spark</span></div>
-                    </div>
-                </div>
-
-                <div class="exp-item fade-in">
-                    <div class="exp-meta">
-                        <div class="exp-date">Aug 2024 — Dec 2024</div>
-                        <div class="exp-company">Brigham and Women's Hospital</div>
-                        <div class="exp-location">Boston, MA</div>
-                    </div>
-                    <div class="exp-body">
-                        <h3>Research Data Scientist</h3>
-                        <ul>
-                            <li>Built a meta-analysis pipeline over ClinicalTrials.gov and PubMed, using random forests
-                                and mixed-effects models to quantify participant heterogeneity across 10+ years of IBS
-                                and psychiatric trials, producing findings presented to the clinical research team</li>
-                            <li>Analyzed 10,000+ pharmaceutical news articles with BERT and RoBERTa-based sentiment
-                                models, identifying a measurable correlation between negative Phase 2/3 media coverage
-                                and subsequent regulatory failure rates</li>
-                            <li>Created a quantitative finance system tracking stock volatility around clinical trial
-                                announcements using GARCH modeling and event-study methodology, enabling the team to
-                                assess market-signal reliability for trial outcome prediction</li>
-                        </ul>
-                        <div class="exp-tech">
-                            <span>BERT</span><span>RoBERTa</span><span>spaCy</span><span>statsmodels</span><span>yfinance</span><span>PostgreSQL</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="exp-item fade-in">
-                    <div class="exp-meta">
-                        <div class="exp-date">Jun 2022 — Jul 2022</div>
-                        <div class="exp-company">HCL Technologies</div>
-                        <div class="exp-location">Noida, India</div>
-                    </div>
-                    <div class="exp-body">
-                        <h3>Software Engineer</h3>
-                        <ul>
-                            <li>Built an RPA automation system in UiPath Studio that scraped and compared travel booking
-                                platforms end-to-end, cutting manual search time by 85% for the operations team</li>
-                            <li>Developed an OCR-based invoice extraction tool using regex parsing and UiPath,
-                                processing variable PDF formats at 95% field-level accuracy and eliminating manual data
-                                entry for the finance department</li>
-                            <li>Designed the error-handling and logging layer in UiPath Orchestrator, ensuring reliable
-                                execution across dynamic web content and mixed document formats in a production workflow
-                            </li>
-                        </ul>
-                        <div class="exp-tech"><span>UiPath</span><span>RPA</span><span>OCR</span><span>Web
-                                Scraping</span><span>Excel Automation</span></div>
-                    </div>
-                </div>
-
-            </div>
+        <div class="exp-body">
+          <h3>Research Data Scientist</h3>
+          <ul>
+            <li>Built a meta-analysis pipeline over ClinicalTrials.gov and PubMed, using random forests and mixed-effects models to quantify participant heterogeneity across 10+ years of IBS and psychiatric trials.</li>
+            <li>Analyzed 10,000+ pharmaceutical news articles with BERT and RoBERTa, identifying a measurable correlation between negative Phase 2/3 media coverage and subsequent regulatory failure rates.</li>
+            <li>Created a quantitative finance system tracking stock volatility around clinical trial announcements using GARCH modeling and event-study methodology.</li>
+          </ul>
+          <div class="exp-tech"><span>BERT</span><span>RoBERTa</span><span>spaCy</span><span>statsmodels</span><span>yfinance</span><span>PostgreSQL</span></div>
         </div>
-    </section>
-
-    <!-- TECHNICAL PAPERS -->
-    <section id="papers">
-        <div class="section-inner">
-            <div class="section-label fade-in">Research</div>
-            <h2 class="section-title fade-in">Technical Papers</h2>
-            <div class="papers-grid">
-                <div class="paper-card fade-in">
-                    <h3>Analysis of Explainable Methods on Medical Image Classification</h3>
-                    <div class="paper-venue">ICAECT 2023 (IEEE) · May 2023</div>
-                    <p>Compared Grad-CAM, Integrated Gradients, and LIME on lung cancer histopathology classification
-                        with VGG-16 and ResNet-50, benchmarking interpretability quality and compute cost to guide XAI
-                        method selection in clinical settings.</p>
-                    <a href="https://ieeexplore.ieee.org/document/10118312/" class="paper-link" target="_blank">Read
-                        Paper</a>
-                </div>
-                <div class="paper-card fade-in stagger-1">
-                    <h3>Intrusion Detection: A Deep Learning Approach</h3>
-                    <div class="paper-venue">ICEEICT 2023 · April 2023</div>
-                    <p>Proposed a hybrid CNN-LSTM-SVM architecture for network intrusion detection, reaching 97.29%
-                        accuracy and outperforming traditional IDS methods by 15+ points across NSL-KDD and CICIDS2017
-                        datasets.</p>
-                    <a href="https://arxiv.org/abs/2306.07601" class="paper-link" target="_blank">Read Paper</a>
-                </div>
-                <div class="paper-card fade-in stagger-2">
-                    <h3>Adversarial Attacks and Defences for Skin Cancer Classification</h3>
-                    <div class="paper-venue">ICONAT 2023 (IEEE) · April 2023</div>
-                    <p>Evaluated PGD and FGSM attacks on dermatoscopic classifiers, then implemented adversarial
-                        training defenses that recovered 27.73 percentage points of robustness without sacrificing
-                        clean-image performance.</p>
-                    <a href="https://ieeexplore.ieee.org/document/10080537" class="paper-link" target="_blank">Read
-                        Paper</a>
-                </div>
-                <div class="paper-card fade-in stagger-3">
-                    <h3>Image Captioning Using Transformer: VISIONAID</h3>
-                    <div class="paper-venue">IRJET · October 2022</div>
-                    <p>Designed a Swin Transformer-based image captioning system with geometric-aware self-attention,
-                        achieving measurable improvements in BLEU, METEOR, and CIDEr over CNN-RNN baselines on MSCOCO
-                        and Flickr30k.</p>
-                    <a href="https://www.irjet.net/archives/V9/i10/IRJET-V9I1087.pdf" class="paper-link"
-                        target="_blank">Read Paper</a>
-                </div>
-            </div>
+      </div>
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          Jun 2022 — Jul 2022<br>
+          <div class="company">HCL Technologies<br>Noida, India</div>
         </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" style="background: var(--bg-alt);">
-        <div class="section-inner">
-            <div class="section-label fade-in">Work</div>
-            <h2 class="section-title fade-in">Projects</h2>
-            <div class="projects-grid">
-
-                <div class="project-card fade-in">
-                    <div class="project-date">Oct 2025</div>
-                    <h3>Healthcare Data Pipeline</h3>
-                    <p>End-to-end pipeline handling 10M+ patient records through real-time Kafka streaming (500+
-                        events/min) and batch Spark ETL. Implemented dbt medallion architecture with 50+ Great
-                        Expectations tests maintaining 99%+ data quality, cutting full-refresh times by 85%.</p>
-                    <div class="project-stack">
-                        <span>Kafka</span><span>Spark</span><span>Airflow</span><span>dbt</span><span>Docker</span><span>K8s</span><span>Terraform</span>
-                    </div>
-                    <a href="https://github.com/VinayJogani14/Healthcare-Data-Pipeline" class="project-link"
-                        target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in stagger-1">
-                    <div class="project-date">Oct 2025</div>
-                    <h3>Financial Health Dashboard</h3>
-                    <p>Designed a PostgreSQL warehouse with 7 normalized tables and recursive CTEs powering sub-50ms
-                        analytical queries. Built a Python ETL pipeline with Z-score anomaly detection and a 5-page
-                        Tableau dashboard used to track budget variance and flag unusual spending.</p>
-                    <div class="project-stack">
-                        <span>PostgreSQL</span><span>Tableau</span><span>pandas</span><span>matplotlib</span><span>ReportLab</span>
-                    </div>
-                    <a href="https://github.com/VinayJogani14/Financial-Dasboard" class="project-link"
-                        target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in stagger-2">
-                    <div class="project-date">Oct 2025</div>
-                    <h3>NBA Injury Prediction System</h3>
-                    <p>Trained XGBoost/LightGBM models on 4,525 games with 55+ engineered features (fatigue indices,
-                        workload metrics) reaching 78% AUC-ROC. Served predictions via FastAPI at sub-100ms p95 latency
-                        with Redis caching and MLflow versioning.</p>
-                    <div class="project-stack">
-                        <span>XGBoost</span><span>FastAPI</span><span>Redis</span><span>MLflow</span><span>Docker</span>
-                    </div>
-                    <a href="https://github.com/VinayJogani14/NBA-Injury-Prediction-System" class="project-link"
-                        target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in">
-                    <div class="project-date">Oct 2025</div>
-                    <h3>Trading Signals</h3>
-                    <p>Built a real-time Streamlit app that pulls live Yahoo Finance data and generates consensus
-                        buy/sell signals by combining RSI, MACD, SMA, and Bollinger Bands with automated risk/reward
-                        calculations and dynamic support/resistance levels.</p>
-                    <div class="project-stack">
-                        <span>Streamlit</span><span>Roboquant</span><span>yfinance</span><span>pandas</span>
-                    </div>
-                    <a href="https://github.com/VinayJogani14/trading-signals" class="project-link" target="_blank">View
-                        Project</a>
-                </div>
-
-                <div class="project-card fade-in stagger-1">
-                    <div class="project-date">Oct 2025</div>
-                    <h3>Personal Finance API</h3>
-                    <p>Designed 4 independent FastAPI microservices (Auth, Transactions, Budgets, Analytics) with JWT
-                        auth, Redis caching reducing latency by 30%, and 92% test coverage. Handles 500+ concurrent
-                        users at sub-50ms response times in load testing.</p>
-                    <div class="project-stack">
-                        <span>FastAPI</span><span>PostgreSQL</span><span>Redis</span><span>Docker</span><span>K8s</span><span>Nginx</span>
-                    </div>
-                    <a href="https://github.com/VinayJogani14/Personal-Finance-API" class="project-link"
-                        target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in stagger-2">
-                    <div class="project-date">Oct 2025</div>
-                    <h3>Sports Betting A/B Testing Platform</h3>
-                    <p>Built a full experimentation engine supporting frequentist, Bayesian, and sequential tests with
-                        multi-armed bandits (Thompson Sampling, UCB1). ML pipeline predicts customer lifetime value
-                        (R²=0.89) and churn (AUC-ROC=0.92), projecting $500K+ annual revenue impact.</p>
-                    <div class="project-stack">
-                        <span>PostgreSQL</span><span>scikit-learn</span><span>scipy</span><span>statsmodels</span>
-                    </div>
-                    <a href="https://github.com/VinayJogani14/Sports-Betting-AB-Testing" class="project-link"
-                        target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in">
-                    <div class="project-date">Aug 2025</div>
-                    <h3>KellyBet Analytics Platform</h3>
-                    <p>Concurrent sports analytics system pulling real-time odds from multiple APIs via asyncio.
-                        Ensemble ML models (Random Forest, Gradient Boosting) achieve 87% prediction accuracy across 4
-                        sports, processing 100K+ historical records for daily model retraining.</p>
-                    <div class="project-stack">
-                        <span>Streamlit</span><span>scikit-learn</span><span>asyncio</span><span>SQLite</span>
-                    </div>
-                    <a href="https://github.com/VinayJogani14/KellyBet-Analytics-Platform" class="project-link"
-                        target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in stagger-1">
-                    <div class="project-date">Jul – Aug 2025</div>
-                    <h3>CodeBuddy: Code Explanation Generator</h3>
-                    <p>Fine-tuned CodeT5 with a RAG pipeline over 2.1M code-doc pairs, outperforming GPT-4 by 24.1% on
-                        BLEU for code explanation tasks. FAISS vector index enables sub-35ms retrieval across 2M+ code
-                        snippets with 0.84 BERTScore similarity.</p>
-                    <div class="project-stack"><span>CodeT5</span><span>FAISS</span><span>PyTorch</span><span>RAG</span>
-                    </div>
-                    <a href="https://github.com/VinayJogani14/CodeBuddy-A-Natural-Language-Code-Explanation-Generator"
-                        class="project-link" target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in stagger-2">
-                    <div class="project-date">Jul – Aug 2025</div>
-                    <h3>SorosAI: Pairs Trading System</h3>
-                    <p>Combined an NLP chatbot (MiniLM + FAISS for 4,000+ Q&A pairs at 90%+ accuracy) with a statistical
-                        arbitrage engine using Engle-Granger cointegration and Z-score signals, achieving Sharpe ratios
-                        above 1.5 in historical backtests.</p>
-                    <div class="project-stack">
-                        <span>SentenceTransformers</span><span>FAISS</span><span>statsmodels</span><span>yFinance</span>
-                    </div>
-                    <a href="https://github.com/VinayJogani14/SorosAI-Intelligent-Biography-and-Pairs-Trading-System"
-                        class="project-link" target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in">
-                    <div class="project-date">Jun 2025</div>
-                    <h3>Workflow Automation: Swimlane Chatbot</h3>
-                    <p>Parses Swimlane diagrams and OpenAPI 3.0 specs using GPT-4 Vision, extracting structured event
-                        sequences (actor, action, decision). FAISS-backed semantic search enables natural language
-                        queries over unstructured process flows and API docs.</p>
-                    <div class="project-stack"><span>GPT-4
-                            Vision</span><span>FAISS</span><span>Streamlit</span><span>OpenAPI</span></div>
-                    <a href="https://github.com/VinayJogani14/swimlane-chatbot" class="project-link"
-                        target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in stagger-1">
-                    <div class="project-date">May 2025</div>
-                    <h3>AgileSmartSOR: Trading Simulator</h3>
-                    <p>Simulates institutional order execution with VWAP, TWAP, and POV algorithms across multiple
-                        exchanges. Interactive Streamlit UI allows real-time parameter tuning to analyze execution
-                        costs, slippage, and market microstructure behavior.</p>
-                    <div class="project-stack"><span>Streamlit</span><span>pandas</span><span>yfinance</span></div>
-                    <a href="https://github.com/VinayJogani14/Smart-Order-Routing-and-Trading-Algorithms-using-Agile-Methodology"
-                        class="project-link" target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in stagger-2">
-                    <div class="project-date">Mar – Apr 2025</div>
-                    <h3>Skin Cancer Classification (Parallel ML)</h3>
-                    <p>Classified 35 skin conditions on a 245K-image dataset using EfficientNet-B3 and DenseNet-121,
-                        reaching 91.8% accuracy and 96.2% macro F1. Distributed training across 4x A100 GPUs via PyTorch
-                        DDP cut training time by 3.37x.</p>
-                    <div class="project-stack"><span>PyTorch
-                            DDP</span><span>EfficientNet-B3</span><span>DenseNet-121</span><span>A100 GPUs</span></div>
-                    <a href="https://github.com/VinayJogani14/Skin-Cancer-Classification-Using-High-Parallel-Machine-Learning"
-                        class="project-link" target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in">
-                    <div class="project-date">Feb – Apr 2025</div>
-                    <h3>Supply Chain: Knowledge Graph & LLM</h3>
-                    <p>Modeled retail supply networks in Neo4j (products, suppliers, orders, shipments) with
-                        Cypher-driven analytics. Interactive Streamlit dashboard supports supplier traceability, delay
-                        detection, and bottleneck analysis with planned NL-to-Cypher via GPT-4.</p>
-                    <div class="project-stack">
-                        <span>Neo4j</span><span>Cypher</span><span>Streamlit</span><span>GPT-4</span><span>Plotly</span>
-                    </div>
-                    <a href="https://github.com/VinayJogani14/Supply-Chain-Management-using-Knowledge-Graphs-and-LLM"
-                        class="project-link" target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in stagger-1">
-                    <div class="project-date">Feb 2025</div>
-                    <h3>Volatility Surface Modeling</h3>
-                    <p>Calibrated implied volatility surfaces with Black-Scholes and Heston stochastic models using
-                        SciPy and CVXPY optimization. Backtested delta-neutral and long/short vol strategies with VaR/ES
-                        risk metrics and interactive 3D Plotly visualizations.</p>
-                    <div class="project-stack">
-                        <span>SciPy</span><span>CVXPY</span><span>Plotly</span><span>yFinance</span><span>Streamlit</span>
-                    </div>
-                    <a href="https://github.com/VinayJogani14/Volatility-Surface-Modelling" class="project-link"
-                        target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in stagger-2">
-                    <div class="project-date">Sep 2024</div>
-                    <h3>Options Pricing Model</h3>
-                    <p>Implemented Black-Scholes, Binomial Tree, and Monte Carlo pricing for European options with live
-                        yfinance data. Compared model convergence behavior and computational trade-offs across
-                        stochastic and analytical approaches.</p>
-                    <div class="project-stack">
-                        <span>NumPy</span><span>SciPy</span><span>yfinance</span><span>Matplotlib</span>
-                    </div>
-                    <a href="https://github.com/VinayJogani14/Options-pricing-model" class="project-link"
-                        target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in">
-                    <div class="project-date">Aug 2024</div>
-                    <h3>Deep RL Trading Algorithm</h3>
-                    <p>Created a custom OpenAI Gym environment with OHLCV data and technical indicators (ta library),
-                        then trained DRL agents via stable_baselines3 with Bayesian hyperparameter search to optimize
-                        trading P&L over historical market data.</p>
-                    <div class="project-stack">
-                        <span>Gym</span><span>stable_baselines3</span><span>yfinance</span><span>Bayesian Opt</span>
-                    </div>
-                    <a href="https://github.com/VinayJogani14/Deep-Reinforcement-Learning-Algorithm"
-                        class="project-link" target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in stagger-1">
-                    <div class="project-date">Jul 2024</div>
-                    <h3>RL for Portfolio Management</h3>
-                    <p>Trained a PPO agent in a custom Gymnasium environment simulating 5 assets over 1,000 trading days
-                        with 1.5% transaction costs and concentration penalties. Achieved 23% higher cumulative return
-                        than baseline while maintaining 90%+ portfolio diversification.</p>
-                    <div class="project-stack">
-                        <span>Gymnasium</span><span>Stable-Baselines3</span><span>PPO</span><span>NumPy</span>
-                    </div>
-                    <a href="https://github.com/VinayJogani14/Reinforcement-Learning-for-Portfolio-Management"
-                        class="project-link" target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in stagger-2">
-                    <div class="project-date">Jun 2024</div>
-                    <h3>Deep RL Pairs Trading</h3>
-                    <p>Trained a DQN agent to execute market-neutral pairs trades on AAPL/MSFT using spread dynamics,
-                        10- and 30-day rolling averages, and rolling volatility as state features, capturing
-                        mean-reversion opportunities automatically.</p>
-                    <div class="project-stack"><span>DQN</span><span>OpenAI
-                            Gym</span><span>pandas</span><span>NumPy</span></div>
-                    <a href="https://github.com/VinayJogani14/Deep-Reinforcement-Learning-Pairs-Trading"
-                        class="project-link" target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in">
-                    <div class="project-date">Jun 2024</div>
-                    <h3>Mean-Variance Optimization with ESG</h3>
-                    <p>Optimized a 15-stock S&P 500 portfolio using PyPortfolioOpt with Ledoit-Wolf shrinkage and ESG
-                        score constraints. ESG-constrained portfolios reduced volatility by 22% and improved Sharpe
-                        ratio by 18% versus unconstrained baselines in backtesting.</p>
-                    <div class="project-stack">
-                        <span>PyPortfolioOpt</span><span>SciPy</span><span>CAPM</span><span>Matplotlib</span>
-                    </div>
-                    <a href="https://github.com/VinayJogani14/Mean-Variance-Opt-with-ESG-scores" class="project-link"
-                        target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in stagger-1">
-                    <div class="project-date">May 2024</div>
-                    <h3>Algorithmic Insider Trading Detector</h3>
-                    <p>Ingested yfinance price data and SEC Form 4 filings (BeautifulSoup + EDGAR), then trained Random
-                        Forest, Gradient Boosting, and Isolation Forest models to flag anomalous trading patterns
-                        correlated with insider activity.</p>
-                    <div class="project-stack">
-                        <span>yfinance</span><span>BeautifulSoup</span><span>scikit-learn</span><span>Seaborn</span>
-                    </div>
-                    <a href="https://github.com/VinayJogani14/Algorithmic-Insider-Trading-Detector" class="project-link"
-                        target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in stagger-2">
-                    <div class="project-date">Apr 2024</div>
-                    <h3>Trading Recommendation: Technical & Sentiment</h3>
-                    <p>Pulls NASDAQ symbols via FTP and historical data from Yahoo Finance, then combines technical
-                        indicators with Reddit/Twitter sentiment to algorithmically rank and recommend the top 5 stocks
-                        daily.</p>
-                    <div class="project-stack"><span>yFinance</span><span>pandas</span><span>Sentiment
-                            Analysis</span><span>Web Scraping</span></div>
-                    <a href="https://github.com/VinayJogani14/Trading-with-Technical-and-Sentimental-Analysis"
-                        class="project-link" target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in">
-                    <div class="project-date">Sep 2022 – May 2023</div>
-                    <h3>Copy-Move Forgery Detection</h3>
-                    <p>Trained a custom CNN on the CASIA 2.0 dataset reaching 96.90% accuracy for copy-move manipulation
-                        detection. Deployed on AWS EC2 with SVM-based categorization and a web GUI for real-time image
-                        testing.</p>
-                    <div class="project-stack"><span>CNN</span><span>SVM</span><span>AWS EC2</span><span>CASIA
-                            2.0</span></div>
-                    <a href="https://github.com/VinayJogani14/Copy-Move-Forgery-Detection" class="project-link"
-                        target="_blank">View Project</a>
-                </div>
-
-                <div class="project-card fade-in stagger-1">
-                    <div class="project-date">Dec 2022 – May 2023</div>
-                    <h3>DeepFake Detection</h3>
-                    <p>Built a GAN-based detection system using an MRI-GAN framework that highlights synthesized
-                        artifacts in manipulated images. Plain-frames model reached 91% test accuracy on the DeepFake
-                        Detection Challenge Dataset.</p>
-                    <div class="project-stack"><span>GANs</span><span>MRI-GAN</span><span>SSIM</span><span>Deep
-                            Learning</span></div>
-                    <a href="https://github.com/VinayJogani14/Deep-Fake-Detection-GAN-s" class="project-link"
-                        target="_blank">View Project</a>
-                </div>
-
-            </div>
+        <div class="exp-body">
+          <h3>Software Engineer</h3>
+          <ul>
+            <li>Built an RPA automation system in UiPath Studio that scraped and compared travel booking platforms, cutting manual search time by 85%.</li>
+            <li>Developed an OCR-based invoice extraction tool processing variable PDF formats at 95% field-level accuracy.</li>
+            <li>Designed the error-handling and logging layer in UiPath Orchestrator for reliable production execution.</li>
+          </ul>
+          <div class="exp-tech"><span>UiPath</span><span>RPA</span><span>OCR</span><span>Web Scraping</span><span>Excel Automation</span></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- CERTIFICATES -->
-    <section id="certificates">
-        <div class="section-inner">
-            <div class="section-label fade-in">Credentials</div>
-            <h2 class="section-title fade-in">Certificates</h2>
-            <div class="certs-grid">
-                <div class="cert-card fade-in">
-                    <h4>Foundations of Business Learning</h4>
-                    <div class="cert-issuer">Northeastern University · Sep 2025</div><a
-                        href="https://northeastern.badgr.com/public/credentials/xpQ7xJB9TRelAGd5vNbZXA?identity__email=jogani.v%40northeastern.edu"
-                        class="cert-link" target="_blank">View Certificate →</a>
-                </div>
-                <div class="cert-card fade-in stagger-1">
-                    <h4>Foundations of Responsible AI Learning</h4>
-                    <div class="cert-issuer">Northeastern University · Sep 2025</div><a
-                        href="https://northeastern.badgr.com/public/credentials/or8B7_xjQsWAOlJY0SCC4w?identity__email=jogani.v%40northeastern.edu"
-                        class="cert-link" target="_blank">View Certificate →</a>
-                </div>
-                <div class="cert-card fade-in stagger-2">
-                    <h4>Foundations of Software Engineering and Data Management</h4>
-                    <div class="cert-issuer">Northeastern University · Aug 2025</div><a
-                        href="https://northeastern.badgr.com/public/credentials/t70JusHFQ3eS8KcBfu5zXA?identity__email=jogani.v%40northeastern.edu"
-                        class="cert-link" target="_blank">View Certificate →</a>
-                </div>
-                <div class="cert-card fade-in">
-                    <h4>RPA Developer Foundation (v2020.10)</h4>
-                    <div class="cert-issuer">UiPath · Jun 2022</div><a
-                        href="https://e4ace130-7adb-46e0-8246-2a9ee1004da9.filesusr.com/ugd/327f52_d5b202c0cc2f402e85e93404ee4bab13.pdf"
-                        class="cert-link" target="_blank">View Certificate →</a>
-                </div>
-                <div class="cert-card fade-in stagger-1">
-                    <h4>UiPath Document Understanding Overview</h4>
-                    <div class="cert-issuer">UiPath · Jun 2022</div><a
-                        href="https://e4ace130-7adb-46e0-8246-2a9ee1004da9.filesusr.com/ugd/327f52_de14fadcc0c04922a1c67021c9f48dca.pdf"
-                        class="cert-link" target="_blank">View Certificate →</a>
-                </div>
-                <div class="cert-card fade-in stagger-2">
-                    <h4>Financial Markets</h4>
-                    <div class="cert-issuer">Yale University (Coursera) · May 2020</div><a
-                        href="https://www.coursera.org/account/accomplishments/verify/LW3EAW29CLA3" class="cert-link"
-                        target="_blank">View Certificate →</a>
-                </div>
-            </div>
+<!-- PAPERS -->
+<section id="papers">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label">05 / Research</div>
+      <h2 class="section-title">Technical <span class="italic">papers</span></h2>
+    </div>
+    <div class="papers-grid">
+      <div class="paper reveal">
+        <div class="paper-venue">ICAECT 2023 · IEEE · May 2023</div>
+        <h3>Analysis of Explainable Methods on Medical Image Classification</h3>
+        <p>Compared Grad-CAM, Integrated Gradients, and LIME on lung cancer histopathology with VGG-16 and ResNet-50, benchmarking interpretability quality and compute cost to guide XAI method selection in clinical settings.</p>
+        <a href="https://ieeexplore.ieee.org/document/10118312/" target="_blank">Read paper →</a>
+      </div>
+      <div class="paper reveal">
+        <div class="paper-venue">ICEEICT 2023 · April 2023</div>
+        <h3>Intrusion Detection: A Deep Learning Approach</h3>
+        <p>Proposed a hybrid CNN-LSTM-SVM architecture for network intrusion detection, reaching 97.29% accuracy and outperforming traditional IDS methods by 15+ points across NSL-KDD and CICIDS2017.</p>
+        <a href="https://arxiv.org/abs/2306.07601" target="_blank">Read paper →</a>
+      </div>
+      <div class="paper reveal">
+        <div class="paper-venue">ICONAT 2023 · IEEE · April 2023</div>
+        <h3>Adversarial Attacks and Defences for Skin Cancer Classification</h3>
+        <p>Evaluated PGD and FGSM attacks on dermatoscopic classifiers, then implemented adversarial training defenses that recovered 27.73 percentage points of robustness without sacrificing clean-image performance.</p>
+        <a href="https://ieeexplore.ieee.org/document/10080537" target="_blank">Read paper →</a>
+      </div>
+      <div class="paper reveal">
+        <div class="paper-venue">IRJET · October 2022</div>
+        <h3>Image Captioning Using Transformer: VISIONAID</h3>
+        <p>Designed a Swin Transformer-based image captioning system with geometric-aware self-attention, achieving measurable improvements in BLEU, METEOR, and CIDEr over CNN-RNN baselines on MSCOCO and Flickr30k.</p>
+        <a href="https://www.irjet.net/archives/V9/i10/IRJET-V9I1087.pdf" target="_blank">Read paper →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label">06 / Work</div>
+      <h2 class="section-title">Selected <span class="italic">projects</span></h2>
+    </div>
+    <div class="proj-grid" id="projGrid">
+      <a class="proj reveal" href="https://github.com/VinayJogani14/Healthcare-Data-Pipeline" target="_blank">
+        <div class="proj-date">Oct 2025</div>
+        <h3>Healthcare Data Pipeline</h3>
+        <p>End-to-end pipeline handling 10M+ patient records via real-time Kafka streaming (500+ events/min) and batch Spark ETL. dbt medallion architecture with 50+ Great Expectations tests maintaining 99%+ data quality.</p>
+        <div class="proj-tech"><span>Kafka</span><span>Spark</span><span>Airflow</span><span>dbt</span><span>Docker</span><span>K8s</span><span>Terraform</span></div>
+        <span class="proj-link">View project <span class="arrow">→</span></span>
+      </a>
+      <a class="proj reveal" href="https://github.com/VinayJogani14/Personal-Finance-API" target="_blank">
+        <div class="proj-date">Oct 2025</div>
+        <h3>Personal Finance API</h3>
+        <p>4 FastAPI microservices (Auth, Transactions, Budgets, Analytics) with JWT auth, Redis caching reducing latency by 30%, 92% test coverage. Handles 500+ concurrent users at sub-50ms response times.</p>
+        <div class="proj-tech"><span>FastAPI</span><span>PostgreSQL</span><span>Redis</span><span>Docker</span><span>K8s</span><span>Nginx</span></div>
+        <span class="proj-link">View project <span class="arrow">→</span></span>
+      </a>
+      <a class="proj reveal" href="https://github.com/VinayJogani14/NBA-Injury-Prediction-System" target="_blank">
+        <div class="proj-date">Oct 2025</div>
+        <h3>NBA Injury Prediction System</h3>
+        <p>XGBoost/LightGBM on 4,525 games with 55+ engineered features reaching 78% AUC-ROC. Served via FastAPI at sub-100ms p95 latency with Redis caching and MLflow versioning.</p>
+        <div class="proj-tech"><span>XGBoost</span><span>FastAPI</span><span>Redis</span><span>MLflow</span><span>Docker</span></div>
+        <span class="proj-link">View project <span class="arrow">→</span></span>
+      </a>
+      <a class="proj reveal" href="https://github.com/VinayJogani14/Sports-Betting-AB-Testing" target="_blank">
+        <div class="proj-date">Oct 2025</div>
+        <h3>Sports Betting A/B Testing Platform</h3>
+        <p>Full experimentation engine supporting frequentist, Bayesian, and sequential tests with multi-armed bandits. ML predicts CLV (R²=0.89) and churn (AUC=0.92), projecting $500K+ annual revenue impact.</p>
+        <div class="proj-tech"><span>PostgreSQL</span><span>scikit-learn</span><span>scipy</span><span>statsmodels</span></div>
+        <span class="proj-link">View project <span class="arrow">→</span></span>
+      </a>
+      <a class="proj reveal" href="https://github.com/VinayJogani14/Financial-Dasboard" target="_blank">
+        <div class="proj-date">Oct 2025</div>
+        <h3>Financial Health Dashboard</h3>
+        <p>PostgreSQL warehouse with 7 normalized tables, recursive CTEs powering sub-50ms queries. Python ETL with Z-score anomaly detection and 5-page Tableau dashboard.</p>
+        <div class="proj-tech"><span>PostgreSQL</span><span>Tableau</span><span>pandas</span><span>matplotlib</span></div>
+        <span class="proj-link">View project <span class="arrow">→</span></span>
+      </a>
+      <a class="proj reveal" href="https://github.com/VinayJogani14/trading-signals" target="_blank">
+        <div class="proj-date">Sep 2025</div>
+        <h3>Trading Signals</h3>
+        <p>Real-time Streamlit app pulling live Yahoo Finance data and generating consensus buy/sell signals combining RSI, MACD, SMA, and Bollinger Bands with automated risk/reward calculations.</p>
+        <div class="proj-tech"><span>Streamlit</span><span>Roboquant</span><span>yfinance</span><span>pandas</span></div>
+        <span class="proj-link">View project <span class="arrow">→</span></span>
+      </a>
+      <a class="proj reveal" href="https://github.com/VinayJogani14/KellyBet-Analytics-Platform" target="_blank">
+        <div class="proj-date">Aug 2025</div>
+        <h3>KellyBet Analytics Platform</h3>
+        <p>Concurrent sports analytics pulling real-time odds from multiple APIs via asyncio. Ensemble ML models achieve 87% prediction accuracy across 4 sports, processing 100K+ records daily.</p>
+        <div class="proj-tech"><span>Streamlit</span><span>scikit-learn</span><span>asyncio</span><span>SQLite</span></div>
+        <span class="proj-link">View project <span class="arrow">→</span></span>
+      </a>
+      <a class="proj reveal" href="https://github.com/VinayJogani14/CodeBuddy-A-Natural-Language-Code-Explanation-Generator" target="_blank">
+        <div class="proj-date">Jul — Aug 2025</div>
+        <h3>CodeBuddy: Code Explanation Generator</h3>
+        <p>Fine-tuned CodeT5 with RAG over 2.1M code-doc pairs, outperforming GPT-4 by 24.1% on BLEU. FAISS vector index enables sub-35ms retrieval across 2M+ snippets with 0.84 BERTScore.</p>
+        <div class="proj-tech"><span>CodeT5</span><span>FAISS</span><span>PyTorch</span><span>RAG</span></div>
+        <span class="proj-link">View project <span class="arrow">→</span></span>
+      </a>
+      <a class="proj reveal hidden" href="https://github.com/VinayJogani14/SorosAI-Intelligent-Biography-and-Pairs-Trading-System" target="_blank">
+        <div class="proj-date">Jul — Aug 2025</div>
+        <h3>SorosAI: Pairs Trading System</h3>
+        <p>NLP chatbot (MiniLM + FAISS for 4,000+ Q&A pairs at 90%+ accuracy) combined with statistical arbitrage using Engle-Granger cointegration achieving Sharpe ratios above 1.5.</p>
+        <div class="proj-tech"><span>SentenceTransformers</span><span>FAISS</span><span>statsmodels</span><span>yFinance</span></div>
+        <span class="proj-link">View project <span class="arrow">→</span></span>
+      </a>
+      <a class="proj reveal hidden" href="https://github.com/VinayJogani14/swimlane-chatbot" target="_blank">
+        <div class="proj-date">Jun 2025</div>
+        <h3>Workflow Automation: Swimlane Chatbot</h3>
+        <p>Parses Swimlane diagrams and OpenAPI 3.0 specs using GPT-4 Vision, extracting structured event sequences. FAISS semantic search over unstructured process flows and API docs.</p>
+        <div class="proj-tech"><span>GPT-4 Vision</span><span>FAISS</span><span>Streamlit</span><span>OpenAPI</span></div>
+        <span class="proj-link">View project <span class="arrow">→</span></span>
+      </a>
+      <a class="proj reveal hidden" href="https://github.com/VinayJogani14/Smart-Order-Routing-and-Trading-Algorithms-using-Agile-Methodology" target="_blank">
+        <div class="proj-date">May 2025</div>
+        <h3>AgileSmartSOR: Trading Simulator</h3>
+        <p>Institutional order execution with VWAP, TWAP, and POV algorithms across multiple exchanges. Interactive Streamlit UI for parameter tuning and microstructure analysis.</p>
+        <div class="proj-tech"><span>Streamlit</span><span>pandas</span><span>yfinance</span></div>
+        <span class="proj-link">View project <span class="arrow">→</span></span>
+      </a>
+      <a class="proj reveal hidden" href="https://github.com/VinayJogani14/Skin-Cancer-Classification-Using-High-Parallel-Machine-Learning" target="_blank">
+        <div class="proj-date">Mar — Apr 2025</div>
+        <h3>Skin Cancer Classification (Parallel ML)</h3>
+        <p>35 skin conditions on a 245K-image dataset using EfficientNet-B3 and DenseNet-121, reaching 91.8% accuracy. Distributed training across 4x A100 GPUs via PyTorch DDP cut training time by 3.37x.</p>
+        <div class="proj-tech"><span>PyTorch DDP</span><span>EfficientNet-B3</span><span>DenseNet-121</span><span>A100</span></div>
+        <span class="proj-link">View project <span class="arrow">→</span></span>
+      </a>
+      <a class="proj reveal hidden" href="https://github.com/VinayJogani14/Supply-Chain-Management-using-Knowledge-Graphs-and-LLM" target="_blank">
+        <div class="proj-date">Feb — Apr 2025</div>
+        <h3>Supply Chain: Knowledge Graph & LLM</h3>
+        <p>Modeled retail supply networks in Neo4j with Cypher analytics. Streamlit dashboard for supplier traceability, delay detection, and bottleneck analysis with NL-to-Cypher via GPT-4.</p>
+        <div class="proj-tech"><span>Neo4j</span><span>Cypher</span><span>Streamlit</span><span>GPT-4</span><span>Plotly</span></div>
+        <span class="proj-link">View project <span class="arrow">→</span></span>
+      </a>
+      <a class="proj reveal hidden" href="https://github.com/VinayJogani14/Volatility-Surface-Modelling" target="_blank">
+        <div class="proj-date">Feb 2025</div>
+        <h3>Volatility Surface Modeling</h3>
+        <p>Calibrated implied volatility surfaces with Black-Scholes and Heston using SciPy/CVXPY. Backtested delta-neutral strategies with VaR/ES and interactive 3D Plotly visualizations.</p>
+        <div class="proj-tech"><span>SciPy</span><span>CVXPY</span><span>Plotly</span><span>yFinance</span><span>Streamlit</span></div>
+        <span class="proj-link">View project <span class="arrow">→</span></span>
+      </a>
+      <a class="proj reveal hidden" href="https://github.com/VinayJogani14/Options-pricing-model" target="_blank">
+        <div class="proj-date">Sep 2024</div>
+        <h3>Options Pricing Model</h3>
+        <p>Black-Scholes, Binomial Tree, and Monte Carlo pricing for European options with live yfinance data. Compared model convergence and computational trade-offs.</p>
+        <div class="proj-tech"><span>NumPy</span><span>SciPy</span><span>yfinance</span><span>Matplotlib</span></div>
+        <span class="proj-link">View project <span class="arrow">→</span></span>
+      </a>
+      <a class="proj reveal hidden" href="https://github.com/VinayJogani14/Deep-Reinforcement-Learning-Algorithm" target="_blank">
+        <div class="proj-date">Aug 2024</div>
+        <h3>Deep RL Trading Algorithm</h3>
+        <p>Custom OpenAI Gym environment with OHLCV data and technical indicators. Trained DRL agents via stable_baselines3 with Bayesian hyperparameter search.</p>
+        <div class="proj-tech"><span>Gym</span><span>stable_baselines3</span><span>yfinance</span></div>
+        <span class="proj-link">View project <span class="arrow">→</span></span>
+      </a>
+      <a class="proj reveal hidden" href="https://github.com/VinayJogani14/Reinforcement-Learning-for-Portfolio-Management" target="_blank">
+        <div class="proj-date">Jul 2024</div>
+        <h3>RL for Portfolio Management</h3>
+        <p>PPO agent in custom Gymnasium environment simulating 5 assets over 1,000 days with 1.5% transaction costs. 23% higher cumulative return with 90%+ portfolio diversification.</p>
+        <div class="proj-tech"><span>Gymnasium</span><span>Stable-Baselines3</span><span>PPO</span></div>
+        <span class="proj-link">View project <span class="arrow">→</span></span>
+      </a>
+      <a class="proj reveal hidden" href="https://github.com/VinayJogani14/Deep-Reinforcement-Learning-Pairs-Trading" target="_blank">
+        <div class="proj-date">Jun 2024</div>
+        <h3>Deep RL Pairs Trading</h3>
+        <p>DQN agent executing market-neutral pairs trades on AAPL/MSFT using spread dynamics, 10/30-day rolling averages, and rolling volatility as state features.</p>
+        <div class="proj-tech"><span>DQN</span><span>OpenAI Gym</span><span>pandas</span></div>
+        <span class="proj-link">View project <span class="arrow">→</span></span>
+      </a>
+      <a class="proj reveal hidden" href="https://github.com/VinayJogani14/Mean-Variance-Opt-with-ESG-scores" target="_blank">
+        <div class="proj-date">Jun 2024</div>
+        <h3>Mean-Variance Optimization with ESG</h3>
+        <p>15-stock S&P 500 portfolio using PyPortfolioOpt with Ledoit-Wolf shrinkage and ESG score constraints. 22% volatility reduction, 18% Sharpe improvement.</p>
+        <div class="proj-tech"><span>PyPortfolioOpt</span><span>SciPy</span><span>CAPM</span></div>
+        <span class="proj-link">View project <span class="arrow">→</span></span>
+      </a>
+      <a class="proj reveal hidden" href="https://github.com/VinayJogani14/Algorithmic-Insider-Trading-Detector" target="_blank">
+        <div class="proj-date">May 2024</div>
+        <h3>Algorithmic Insider Trading Detector</h3>
+        <p>Ingested yfinance price data and SEC Form 4 filings via BeautifulSoup. Trained Random Forest, Gradient Boosting, and Isolation Forest to flag anomalous trading patterns.</p>
+        <div class="proj-tech"><span>yfinance</span><span>BeautifulSoup</span><span>scikit-learn</span></div>
+        <span class="proj-link">View project <span class="arrow">→</span></span>
+      </a>
+      <a class="proj reveal hidden" href="https://github.com/VinayJogani14/Trading-with-Technical-and-Sentimental-Analysis" target="_blank">
+        <div class="proj-date">Apr 2024</div>
+        <h3>Trading Recommendation: Technical & Sentiment</h3>
+        <p>Pulls NASDAQ symbols via FTP and historical data from Yahoo Finance. Combines technical indicators with Reddit/Twitter sentiment to rank top 5 stocks daily.</p>
+        <div class="proj-tech"><span>yFinance</span><span>pandas</span><span>Sentiment Analysis</span></div>
+        <span class="proj-link">View project <span class="arrow">→</span></span>
+      </a>
+      <a class="proj reveal hidden" href="https://github.com/VinayJogani14/Copy-Move-Forgery-Detection" target="_blank">
+        <div class="proj-date">Sep 2022 — May 2023</div>
+        <h3>Copy-Move Forgery Detection</h3>
+        <p>Custom CNN on CASIA 2.0 reaching 96.90% accuracy for copy-move manipulation detection. Deployed on AWS EC2 with SVM categorization and a web GUI.</p>
+        <div class="proj-tech"><span>CNN</span><span>SVM</span><span>AWS EC2</span></div>
+        <span class="proj-link">View project <span class="arrow">→</span></span>
+      </a>
+      <a class="proj reveal hidden" href="https://github.com/VinayJogani14/Deep-Fake-Detection-GAN-s" target="_blank">
+        <div class="proj-date">Dec 2022 — May 2023</div>
+        <h3>DeepFake Detection</h3>
+        <p>GAN-based detection using MRI-GAN framework that highlights synthesized artifacts. Plain-frames model reached 91% test accuracy on DeepFake Detection Challenge.</p>
+        <div class="proj-tech"><span>GANs</span><span>MRI-GAN</span><span>SSIM</span></div>
+        <span class="proj-link">View project <span class="arrow">→</span></span>
+      </a>
+    </div>
+    <div class="show-more-wrap">
+      <button class="show-more" id="showMore">Show all projects</button>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label">07 / Credentials</div>
+      <h2 class="section-title">Certificates</h2>
+    </div>
+    <div class="cert-grid">
+      <a class="cert reveal" href="https://northeastern.badgr.com/public/credentials/xpQ7xJB9TRelAGd5vNbZXA?identity__email=jogani.v%40northeastern.edu" target="_blank">
+        <div>
+          <h4>Foundations of Business</h4>
+          <div class="issuer">Northeastern University · Sep 2025</div>
         </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="contact-section">
-        <div class="section-inner">
-            <div class="section-label fade-in">Connect</div>
-            <h2 class="section-title fade-in">Get in Touch</h2>
-            <div class="contact-grid">
-                <div class="contact-info fade-in">
-                    <h3>Let's build something together.</h3>
-                    <p>I'm actively seeking opportunities to apply my skill set in building impactful, scalable data and
-                        ML solutions across healthcare, finance, and beyond.</p>
-                    <br>
-                    <p><strong>Location:</strong> San Francisco, CA</p>
-                    <p><a href="mailto:joganivinay@gmail.com" class="email-link">joganivinay@gmail.com</a></p>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/vinayjogani/" target="_blank" title="LinkedIn">in</a>
-                        <a href="https://github.com/VinayJogani14" target="_blank" title="GitHub"><svg width="16"
-                                height="16" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                            </svg></a>
-                        <a href="https://scholar.google.com/citations?hl=en&user=Xnowpo4AAAAJ" target="_blank"
-                            title="Google Scholar">GS</a>
-                        <a href="https://www.scopus.com/authid/detail.uri?authorId=58030923600" target="_blank"
-                            title="Scopus">Sc</a>
-                        <a href="https://orcid.org/0009-0005-9568-5747" target="_blank" title="ORCID">iD</a>
-                    </div>
-                </div>
-                <div class="fade-in stagger-1" style="display:flex; flex-direction:column; gap:16px;">
-                    <a href="./Vinay%20Jogani_Resume.pdf" class="btn btn-primary" target="_blank" style="justify-content:center;">Resume</a>
-                    <a href="https://github.com/VinayJogani14" class="btn btn-outline" target="_blank"
-                        style="justify-content:center;">View GitHub Profile</a>
-                    <a href="https://www.linkedin.com/in/vinayjogani/" class="btn btn-outline" target="_blank"
-                        style="justify-content:center;">Connect on LinkedIn</a>
-                </div>
-            </div>
+        <div class="view">View →</div>
+      </a>
+      <a class="cert reveal" href="https://northeastern.badgr.com/public/credentials/or8B7_xjQsWAOlJY0SCC4w?identity__email=jogani.v%40northeastern.edu" target="_blank">
+        <div>
+          <h4>Foundations of Responsible AI</h4>
+          <div class="issuer">Northeastern University · Sep 2025</div>
         </div>
-    </section>
+        <div class="view">View →</div>
+      </a>
+      <a class="cert reveal" href="https://northeastern.badgr.com/public/credentials/t70JusHFQ3eS8KcBfu5zXA?identity__email=jogani.v%40northeastern.edu" target="_blank">
+        <div>
+          <h4>Software Engineering & Data Mgmt</h4>
+          <div class="issuer">Northeastern University · Aug 2025</div>
+        </div>
+        <div class="view">View →</div>
+      </a>
+      <a class="cert reveal" href="#" target="_blank">
+        <div>
+          <h4>RPA Developer Foundation</h4>
+          <div class="issuer">UiPath · Jun 2022</div>
+        </div>
+        <div class="view">View →</div>
+      </a>
+      <a class="cert reveal" href="#" target="_blank">
+        <div>
+          <h4>Document Understanding</h4>
+          <div class="issuer">UiPath · Jun 2022</div>
+        </div>
+        <div class="view">View →</div>
+      </a>
+      <a class="cert reveal" href="https://www.coursera.org/account/accomplishments/specialization/DV33BF5WKD42" target="_blank">
+        <div>
+          <h4>Python 3 Programming</h4>
+          <div class="issuer">University of Michigan · Jul 2020</div>
+        </div>
+        <div class="view">View →</div>
+      </a>
+      <a class="cert reveal" href="https://www.coursera.org/account/accomplishments/verify/93RHRNB9BEZQ" target="_blank">
+        <div>
+          <h4>Relational Databases & SQL</h4>
+          <div class="issuer">Coursera · Jul 2020</div>
+        </div>
+        <div class="view">View →</div>
+      </a>
+      <a class="cert reveal" href="https://www.coursera.org/account/accomplishments/verify/LW3EAW29CLA3" target="_blank">
+        <div>
+          <h4>Financial Markets</h4>
+          <div class="issuer">Yale University · May 2020</div>
+        </div>
+        <div class="view">View →</div>
+      </a>
+    </div>
+  </div>
+</section>
 
-    <footer>
-        <p>&copy; 2026 Vinay Jogani. All rights reserved.</p>
-    </footer>
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <div class="section-label" style="margin-bottom:32px">08 / Connect</div>
+      <h2 class="contact-title">Let's build<br><span class="italic">something.</span></h2>
+      <p class="contact-sub">I'm actively seeking opportunities to apply my skill set in building impactful, scalable data and ML solutions across healthcare, finance, and beyond.</p>
+    </div>
+    <div class="contact-info reveal">
+      <div>
+        <div class="info-label">Email</div>
+        <div class="info-val"><a href="mailto:joganivinay@gmail.com">joganivinay@gmail.com</a></div>
+      </div>
+      <div>
+        <div class="info-label">Location</div>
+        <div class="info-val">San Francisco, CA</div>
+      </div>
+      <div>
+        <div class="info-label">Status</div>
+        <div class="info-val" style="color:var(--accent)">Open to work</div>
+      </div>
+    </div>
+    <div class="contact-socials reveal">
+      <a class="social-btn" href="https://www.linkedin.com/in/vinayjogani/" target="_blank">LinkedIn ↗</a>
+      <a class="social-btn" href="https://github.com/VinayJogani14" target="_blank">GitHub ↗</a>
+      <a class="social-btn" href="https://x.com/jogani_vinay" target="_blank">Twitter ↗</a>
+      <a class="social-btn" href="https://scholar.google.com/citations?hl=en&user=Xnowpo4AAAAJ" target="_blank">Google Scholar ↗</a>
+      <a class="social-btn" href="https://orcid.org/0009-0005-9568-5747" target="_blank">ORCID ↗</a>
+      <a class="social-btn" href="https://vinayjogani14.github.io/Vinay%20Jogani_Resume.pdf" target="_blank">Resume ↗</a>
+    </div>
+  </div>
+</section>
 
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-        document.querySelectorAll('.nav-links a').forEach(a => {
-            a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
-        });
-    </script>
+<footer>© 2026 Vinay Jogani. All rights reserved.</footer>
+
+<script>
+// scroll reveal
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:.12, rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// nav scroll state
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  if(window.scrollY>50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+// show more projects
+const showMore=document.getElementById('showMore');
+showMore.addEventListener('click',()=>{
+  document.querySelectorAll('.proj.hidden').forEach(p=>p.classList.remove('hidden'));
+  showMore.style.display='none';
+});
+
+// theme toggle
+const themeToggle=document.getElementById('themeToggle');
+const saved=localStorage.getItem('vj-theme');
+if(saved==='light') document.documentElement.setAttribute('data-theme','light');
+themeToggle.addEventListener('click',()=>{
+  const isLight=document.documentElement.getAttribute('data-theme')==='light';
+  if(isLight){
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('vj-theme','dark');
+  } else {
+    document.documentElement.setAttribute('data-theme','light');
+    localStorage.setItem('vj-theme','light');
+  }
+});
+</script>
 
 </body>
-
 </html>

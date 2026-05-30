@@ -7,6 +7,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=JetBrains+Mono:wght@400;500&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DZ1MQV8NDV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DZ1MQV8NDV');
+</script>
 <style>
 :root{
   --bg:#0a0a0a;
@@ -1321,6 +1330,38 @@ themeToggle.addEventListener('click',()=>{
     document.documentElement.setAttribute('data-theme','light');
     localStorage.setItem('vj-theme','light');
   }
+});
+
+// GA4 custom events
+function trackEvent(name, params){
+  if(typeof gtag==='function') gtag('event', name, params||{});
+}
+document.querySelectorAll('a[href*="Resume"]').forEach(a=>{
+  a.addEventListener('click',()=>trackEvent('resume_download',{location:a.closest('section')?.id||'nav'}));
+});
+document.querySelectorAll('a[href^="mailto:"]').forEach(a=>{
+  a.addEventListener('click',()=>trackEvent('email_click'));
+});
+document.querySelectorAll('a[href*="linkedin.com"]').forEach(a=>{
+  a.addEventListener('click',()=>trackEvent('linkedin_click',{source:a.closest('section')?.id||'nav'}));
+});
+document.querySelectorAll('a[href*="github.com"]').forEach(a=>{
+  a.addEventListener('click',()=>{
+    const repo=a.href.split('github.com/VinayJogani14/')[1]||'profile';
+    trackEvent('github_click',{repo:repo});
+  });
+});
+document.querySelectorAll('.proj').forEach(p=>{
+  p.addEventListener('click',()=>{
+    const title=p.querySelector('h3')?.textContent||'unknown';
+    trackEvent('project_click',{project:title});
+  });
+});
+document.querySelectorAll('.paper a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    const title=a.closest('.paper')?.querySelector('h3')?.textContent||'unknown';
+    trackEvent('paper_click',{paper:title});
+  });
 });
 </script>
 
